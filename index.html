@@ -176,6 +176,7 @@
             padding-left: 60px;
             padding-right: 60px;
         }
+
         /*-------------------TABLAS GENERALES----------------*/
         .tabla-simple {
             width: 100%;
@@ -310,6 +311,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
             height: 350px;
+            /* altura uniforme */
             background: #ffffff;
         }
 
@@ -328,6 +330,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+            /* Ajusta sin recortar */
             display: block;
             background: #ffffff;
         }
@@ -548,8 +551,7 @@
                 </tr>
             </tbody>
         </table>
-
-              <!-- ENGRANAJES CÓNICOS -->
+        <!-- ENGRANAJES CÓNICOS -->
         <h2 style="font-size: 22px; margin-top: 35px;">Engranajes cónicos</h2>
 
         <p>
@@ -689,6 +691,28 @@
             </tbody>
         </table>
 
+        <!-- ⚙️ MODELO 3D DE ENGRANE HELICOIDAL -->
+        <div style="text-align:center; margin: 25px 0;">
+            <model-viewer
+                id="helicalViewer"
+                src="Imagenes/helical_gear.glb"
+                alt="Modelo 3D de engrane helicoidal"
+                camera-controls
+                auto-rotate
+                auto-rotate-delay="2000"
+                interaction-prompt="auto"
+                style="
+                    width:100%;
+                    max-width:600px;
+                    height:450px;
+                    margin:0 auto;
+                    display:block;
+                    background:#f8f8f8;
+                    border-radius:12px;
+                ">
+            </model-viewer>
+        </div>
+
         <!-- GEOMETRÍA FUNDAMENTAL HELICOIDALES -->
         <h2 style="font-size: 22px; margin-top: 35px;">Geometría fundamental de engranes helicoidales</h2>
 
@@ -775,7 +799,7 @@
             <tbody>
                 <tr>
                     <td><strong>Fresado con cabezal divisor</strong></td>
-                    <td>Se corta cada diente por separado utilizando una fresa.</td>
+                    <td>Se corta cada legítimo diente por separado utilizando una fresa.</td>
                     <td>Apto para producción baja o prototipos.</td>
                 </tr>
                 <tr>
@@ -790,7 +814,6 @@
                 </tr>
             </tbody>
         </table>
-
         <h3 style="margin-top:25px;">2. Maquinado generador para engranes cónicos (sistemas tipo Gleason o similares)</h3>
 
         <p>
@@ -801,19 +824,18 @@
         <p><strong>Características técnicas:</strong></p>
         <ul style="font-size:15px;">
             <li>El perfil se obtiene mediante generación, no por forma directa.</li>
-            <li>El ángulo de espiral, profundidad del diente y relación de transmisión se controlan mediante el ajuste
-                del cabezal.</li>
+            <li>El ángulo de espiral, profundidad del diente y relación de transmisión se controlan mediante el ajuste del cabezal.</li>
             <li>Requiere máquinas específicas para engranes cónicos espirales o hipoides.</li>
         </ul>
+
         <p><strong>Aplicaciones:</strong> engranes para diferenciales automotrices y transmisiones angulares con
             requisitos específicos de geometría.</p>
 
         <h3 style="margin-top:25px;">3. Fresado helicoidal sincronizado</h3>
 
         <p>
-            En este proceso, el diente helicoidal se genera sincronizando la rotación del husillo con el avance
-            longitudinal mediante un tren de engranes. La herramienta utilizada es una herramienta de forma, pero la
-            inclinación de la hélice se obtiene mediante la sincronización mecánica.
+            En este proceso, el diente helicoidal se genera sincronizando la rotación del husillo con el avance longitudinal mediante un tren de engranes.
+            La herramienta utilizada es una herramienta de forma, pero la inclinación de la hélice se obtiene mediante la sincronización mecánica.
         </p>
 
         <p><strong>Características técnicas:</strong></p>
@@ -822,14 +844,14 @@
             <li>No requiere maquinaria generadora especializada.</li>
             <li>Adecuado para producción baja o talleres de maquinado general.</li>
         </ul>
-        <p><strong>Aplicaciones:</strong> engranes helicoidales de baja producción, prototipos y fabricación bajo
-            pedido.</p>
+
+        <p><strong>Aplicaciones:</strong> engranes helicoidales de baja producción, prototipos y fabricación bajo pedido.</p>
 
         <h3 style="margin-top:25px;">4. Rectificado de engranes</h3>
 
         <p>
-            El rectificado se utiliza para engranes que requieren tolerancias estrechas o control de desviaciones de
-            perfil. Se emplean muelas abrasivas con la geometría adecuada al tipo de engrane.
+            El rectificado se utiliza para engranes que requieren tolerancias estrechas o control de desviaciones de perfil.
+            Se emplean muelas abrasivas con la geometría adecuada al tipo de engrane.
         </p>
 
         <p><strong>Características técnicas:</strong></p>
@@ -838,17 +860,17 @@
             <li>Permite alcanzar grados de precisión según normas AGMA o ISO.</li>
             <li>Controla problemas como error de paso, error de perfil y error de línea de acción.</li>
         </ul>
-        <p><strong>Aplicaciones:</strong> engranes de transmisiones industriales, cajas automotrices y maquinaria de
-            alta precisión.</p>
+
+        <p><strong>Aplicaciones:</strong> engranes de transmisiones industriales, cajas automotrices y maquinaria de alta precisión.</p>
 
         <!-- PROBLEMAS COMUNES Y SOLUCIONES -->
         <h2 style="font-size: 22px; margin-top: 35px;">Problemas comunes y soluciones</h2>
 
         <p>
-            Durante la fabricación y operación de engranes cónicos y helicoidales pueden presentarse desviaciones
-            dimensionales, errores de perfil o alteraciones en la interacción entre dientes. Estos problemas afectan la
-            transmisión de potencia, la distribución de esfuerzos y la vida útil del conjunto. La siguiente tabla resume
-            los problemas más habituales y sus causas técnicas.
+            Durante la fabricación y operación de engranes cónicos y helicoidales pueden presentarse desviaciones dimensionales,
+            errores de perfil o alteraciones en la interacción entre dientes.
+            Estos problemas afectan la transmisión de potencia, la distribución de esfuerzos y la vida útil del conjunto.
+            La siguiente tabla resume los problemas más habituales y sus causas técnicas.
         </p>
 
         <table class="tabla-simple">
@@ -862,8 +884,7 @@
             <tbody>
                 <tr>
                     <td><strong>Desviación de paso</strong></td>
-                    <td>Error en la división durante el fresado o desajuste en la sincronización mecánica del equipo.
-                    </td>
+                    <td>Error en la división durante el fresado o desajuste en la sincronización mecánica del equipo.</td>
                     <td>Verificar la relación de división; recalibrar el cabezal divisor o el tren de engranes.</td>
                 </tr>
                 <tr>
@@ -894,8 +915,7 @@
                 <tr>
                     <td><strong>Exceso de carga axial en engranes helicoidales</strong></td>
                     <td>Ángulo de hélice inadecuado para la aplicación o falta de soporte en el eje.</td>
-                    <td>Seleccionar un ángulo compatible con la capacidad del soporte; añadir rodamientos adecuados.
-                    </td>
+                    <td>Seleccionar un ángulo compatible con la capacidad del soporte; añadir rodamientos adecuados.</td>
                 </tr>
                 <tr>
                     <td><strong>Desgaste prematuro</strong></td>
@@ -918,15 +938,17 @@
         <p>
             En el sistema de dirección de un vehículo utilitario se utiliza un conjunto de <strong>engranes cónicos
                 espirales</strong> para transferir el movimiento del volante hacia el mecanismo de entrada de la caja de
-            dirección. Durante una inspección de mantenimiento, se sustituyó el engrane conductor por uno nuevo con un
-            <strong>diámetro primitivo de \(D_1 = 75 \text{ mm}\)</strong>. El engrane conducido permanece sin cambio y
-            tiene un <strong>diámetro primitivo de \(D_2 = 110 \text{ mm}\)</strong>.
+            dirección.
+            Durante una inspección de mantenimiento, se sustituyó el engrane conductor por uno nuevo con un
+            <strong>diámetro primitivo de \(D_1 = 75 \text{ mm}\)</strong>.
+            El engrane conducido permanece sin cambio y tiene un <strong>diámetro primitivo de \(D_2 = 110 \text{ mm}\)</strong>.
         </p>
 
         <p>
-            Para verificar que el conjunto mantenga la geometría requerida, se solicita determinar el <strong>ángulo
-                primitivo \(\theta\)</strong> correspondiente a estos valores. Dicho ángulo será utilizado para confirmar
-            la posición de montaje y el ajuste axial dentro del mecanismo.
+            Para verificar que el conjunto mantenga la geometría requerida, se solicita determinar el
+            <strong>ángulo primitivo \(\theta\)</strong>
+            correspondiente a estos valores.
+            Dicho ángulo será utilizado para confirmar la posición de montaje y el ajuste axial dentro del mecanismo.
         </p>
 
         <p><strong>Tarea:</strong> Calcule el ángulo primitivo \(\theta\) y documente el procedimiento de obtención
@@ -964,15 +986,14 @@
 
         <p>
             En una <strong>caja reductora de velocidad para un transportador industrial</strong>, se requiere fabricar
-            un engrane helicoidal que transmitirá potencia entre ejes paralelos. El diseño establece un
-            <strong>paso circular transversal de \(P = 6 \text{ mm}\)</strong> con un <strong>ángulo de hélice de
-                \(\beta = 28^\circ\)</strong>. Antes del maquinado, es necesario configurar el equipo de fresado
-            sincronizado para generar la hélice correcta, lo que exige conocer el <strong>paso helicoidal real</strong>
-            que recorrerá el diente a lo largo del eje.
+            un engrane helicoidal que transmitirá potencia entre ejes paralelos.
+            El diseño establece un <strong>paso circular transversal de \(P = 6 \text{ mm}\)</strong> con un
+            <strong>ángulo de hélice de \(\beta = 28^\circ\)</strong>.
+            Antes del maquinado, es necesario configurar el equipo de fresado sincronizado para generar la hélice correcta,
+            lo que exige conocer el <strong>paso helicoidal real</strong> que recorrerá el diente a lo largo del eje.
         </p>
 
-        <p><strong>Tarea:</strong> Calcule el paso helicoidal \(P_h\) y registre el valor requerido para configurar el
-            desplazamiento longitudinal del equipo.</p>
+        <p><strong>Tarea:</strong> Calcule el paso helicoidal \(P_h\) y registre el valor requerido para configurar el desplazamiento longitudinal del equipo.</p>
 
         <p>La relación entre el paso circular y el paso helicoidal es:</p>
 
@@ -1012,7 +1033,6 @@
                 <button class="btn" onclick="abrirModal('modalCuestionario')">Ver ejercicios</button>
             </div>
         </div>
-
         <!-- ===================== MODAL CUESTIONARIO ===================== -->
         <div id="modalCuestionario" class="modal">
             <div class="modal-content">
@@ -1342,4 +1362,3 @@
 </body>
 
 </html>
-
