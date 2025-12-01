@@ -411,37 +411,28 @@
         }
 
         /* TOOLTIP ELEGANTE PARA REFERENCIAS (carrusel e imágenes sueltas) */
-.carrusel-tooltip {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    max-width: 260px;
-    background: rgba(255, 255, 255, 0.96);
-    color: #000;
-    font-size: 11px;
-    line-height: 1.4;
-    padding: 10px 12px;
-    border-radius: 10px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-    opacity: 0;
-    transform: translateY(-4px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
-
-    /* Para que se vea bien el texto */
-    text-align: left;
-    white-space: normal;          /* permite saltos de línea normales */
-    overflow-wrap: anywhere;      /* rompe la URL en varias líneas */
-    word-break: break-word;       /* respaldo para navegadores viejos */
-}
-
-
-/* Por si en algún momento metes <p> dentro del tooltip */
-.carrusel-tooltip p {
-    text-align: left;
-    margin: 0;
-}
-
+        .carrusel-tooltip {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            max-width: 260px;
+            background: rgba(255, 255, 255, 0.96);
+            color: #000;
+            font-size: 11px;
+            line-height: 1.4;
+            padding: 10px 12px;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            pointer-events: none;
+            /* ajustes para que se vea bien el texto */
+            text-align: left;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
 
         .carrusel-tooltip::before {
             content: "";
@@ -524,6 +515,27 @@
             text-align: center;
             margin-top: 8px;
             color: #555;
+        }
+
+        /* SOLUCIONES OCULTAS */
+        .solucion {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .btn-solucion {
+            margin-top: 12px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #0A8FD8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn-solucion:hover {
+            background: #066da5;
         }
     </style>
 
@@ -716,7 +728,7 @@
                     style="max-width:35%; height:auto;">
                 <div class="carrusel-tooltip">
                     Imagen tomada de:
-                    https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaU5MphpNEharw0bTocYDG5MOCwCl9Cij3D4C3rneGFHkTXA5KK9Ab9p-BtyVU2ObI7Jn5H__09VwQ7RivQbqes0Cc2UWclEAZuSXbYGMdHqUKtELOHeCelUWxr6Mnc-1h4yLcjuEv9fI/s1600/33.jpg
+                    https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaU5MphpNEharw0bTocYDG5MOCwCl9Cij3D4C3rneGFHkTXA5KK9Ab9p-BtyVU2ObI7Jn5H__09VwQ7RivQbqes0Cc2UWclEAZuSXbYGMdHqUKtELOHeCelUWxr6Mnc-1h4yLcjuEv9fl/s1600/33.jpg
                 </div>
             </div>
         </div>
@@ -1056,33 +1068,38 @@
         <p>Calcule el ángulo primitivo \(\theta\) y documente el procedimiento de obtención
             empleando la relación geométrica correspondiente.</p>
 
-        <p><strong>Solución:</strong></p>
-        <p>La relación entre los diámetros primitivos y el ángulo primitivo se expresa como:</p>
+        <!-- BOTÓN VER SOLUCIÓN ACTIVIDAD 1 -->
+        <button class="btn-solucion" onclick="toggleSolucion(this)">Ver solución</button>
 
-        <div class="equation">
-            \[
-            \tan(\theta) = \frac{D_2}{D_1}
-            \]
+        <div class="solucion">
+            <p><strong>Solución:</strong></p>
+            <p>La relación entre los diámetros primitivos y el ángulo primitivo se expresa como:</p>
+
+            <div class="equation">
+                \[
+                \tan(\theta) = \frac{D_2}{D_1}
+                \]
+            </div>
+
+            <p>Sustituyendo los valores:</p>
+
+            <div class="equation">
+                \[
+                \tan(\theta) = \frac{110}{75} \approx 1.4667
+                \]
+            </div>
+
+            <p>Se obtiene el ángulo aplicando la función inversa de la tangente:</p>
+
+            <div class="equation">
+                \[
+                \theta = \tan^{-1}(1.4667) \approx 55.7^\circ
+                \]
+            </div>
+
+            <p><strong>Respuesta:</strong> El ángulo primitivo correspondiente a los diámetros indicados es
+                aproximadamente <strong>55.7°</strong>.</p>
         </div>
-
-        <p>Sustituyendo los valores:</p>
-
-        <div class="equation">
-            \[
-            \tan(\theta) = \frac{110}{75} \approx 1.4667
-            \]
-        </div>
-
-        <p>Se obtiene el ángulo aplicando la función inversa de la tangente:</p>
-
-        <div class="equation">
-            \[
-            \theta = \tan^{-1}(1.4667) \approx 55.7^\circ
-            \]
-        </div>
-
-        <p><strong>Respuesta:</strong> El ángulo primitivo correspondiente a los diámetros indicados es
-            aproximadamente <strong>55.7°</strong>.</p>
 
         <h3 style="margin-top:30px;">Actividad 2. Determinación del paso helicoidal en una caja reductora</h3>
 
@@ -1100,30 +1117,35 @@
 
         <p>La relación entre el paso circular y el paso helicoidal es:</p>
 
-        <div class="equation">
-            \[
-            P_h = \frac{P}{\cos(\beta)}
-            \]
+        <!-- BOTÓN VER SOLUCIÓN ACTIVIDAD 2 -->
+        <button class="btn-solucion" onclick="toggleSolucion(this)">Ver solución</button>
+
+        <div class="solucion">
+            <div class="equation">
+                \[
+                P_h = \frac{P}{\cos(\beta)}
+                \]
+            </div>
+
+            <p><strong>Sustituyendo los datos del problema:</strong></p>
+
+            <div class="equation">
+                \[
+                P_h = \frac{6}{\cos(28^\circ)}
+                \]
+            </div>
+
+            <p>Como \(\cos(28^\circ) \approx 0.883\):</p>
+
+            <div class="equation">
+                \[
+                P_h \approx \frac{6}{0.883} \approx 6.80 \text{ mm}
+                \]
+            </div>
+
+            <p><strong>Respuesta:</strong> El paso helicoidal requerido para la configuración de la máquina es
+                aproximadamente <strong>6.80 mm</strong>.</p>
         </div>
-
-        <p><strong>Sustituyendo los datos del problema:</strong></p>
-
-        <div class="equation">
-            \[
-            P_h = \frac{6}{\cos(28^\circ)}
-            \]
-        </div>
-
-        <p>Como \(\cos(28^\circ) \approx 0.883\):</p>
-
-        <div class="equation">
-            \[
-            P_h \approx \frac{6}{0.883} \approx 6.80 \text{ mm}
-            \]
-        </div>
-
-        <p><strong>Respuesta:</strong> El paso helicoidal requerido para la configuración de la máquina es
-            aproximadamente <strong>6.80 mm</strong>.</p>
 
     </section>
 
@@ -1435,6 +1457,21 @@
         }
     </script>
 
+    <!-- MOSTRAR/OCULTAR SOLUCIONES -->
+    <script>
+        function toggleSolucion(boton) {
+            const cont = boton.nextElementSibling;
+
+            if (cont.style.display === "none" || cont.style.display === "") {
+                cont.style.display = "block";
+                boton.textContent = "Ocultar solución";
+            } else {
+                cont.style.display = "none";
+                boton.textContent = "Ver solución";
+            }
+        }
+    </script>
+
     <!-- MATHJAX -->
     <script>
         window.MathJax = {
@@ -1470,6 +1507,3 @@
 </body>
 
 </html>
-
-
-
