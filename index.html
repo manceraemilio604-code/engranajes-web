@@ -1,1462 +1,1234 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engranes cónicos y helicoidales</title>
+    <title>Engranes Cónicos y Helicoidales</title>
 
     <!-- Fuente Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        :root {
-            --gris-texto: #555;
-            --gris-fondo: #EDEDED;
-            --rojo-linea: #B03030;
-            --azul-sub: #0A8FD8;
-            --naranja: #e14b05;
-        }
-
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
             background: white;
+            color: #222;
+            line-height: 1.7;
         }
 
-        /* -------------------- MENÚ DERECHA -------------------- */
-        nav.menu {
-            display: flex;
-            justify-content: flex-end;
-            gap: 40px;
-            padding: 20px 40px;
-            background: white;
-            position: sticky;
-            top: 0;
-            z-index: 10;
+        h1, h2, h3 {
+            font-weight: 800;
         }
 
-        nav.menu a {
-            text-decoration: none;
-            color: var(--gris-texto);
-            padding: 10px 15px;
-            font-size: 18px;
-            font-weight: 400;
-            position: relative;
-            transition: 0.2s ease;
-        }
-
-        nav.menu a:hover {
-            background: #f4f4f4;
-        }
-
-        nav.menu a.activo::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -3px;
+        /* ---------------- PORTADA ---------------- */
+        .hero {
             width: 100%;
-            height: 3px;
-            background: var(--rojo-linea);
-        }
-
-        /* -------------------- BANNER -------------------- */
-        .hero-banner {
-            width: 100%;
-            height: 280px;
-            background-image: url(Imagenes/layer.png);
+            height: 300px;
+            background: linear-gradient(to right, rgba(0,48,104,0.6), rgba(0,0,0,0.5)), url('Imagenes/portada.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
-        }
-
-        .hero-text {
-            color: black;
-            text-align: center;
-        }
-
-        .hero-text h1 {
-            margin: 0;
-            font-size: 45px;
-            font-weight: 700;
-        }
-
-        .hero-text h2 {
-            margin: 5px 0;
-            color: var(--azul-sub);
-            font-size: 24px;
-        }
-
-        .hero-text h3 {
-            margin-top: 5px;
-            color: var(--naranja);
-            font-size: 20px;
-        }
-
-        /* -------------------- SECCIONES -------------------- */
-        section {
-            padding: 40px 60px;
-        }
-
-        section h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--gris-texto);
-        }
-
-        p {
-            text-align: justify;
-            font-size: 18px;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* -------------------- INTRODUCCIÓN -------------------- */
-        #introduccion h2 {
-            color: var(--rojo-linea);
-        }
-
-        #introduccion p {
-            font-size: 15px;
-            line-height: 1.5;
-        }
-
-        #introduccion {
-            max-width: 1100px;
-            margin: 0 auto;
-            text-align: justify;
-        }
-
-        /* -------------------- CONTENIDO -------------------- */
-        #contenido h2 {
-            color: var(--rojo-linea);
-        }
-
-        #contenido p {
-            font-size: 15px;
-            line-height: 1.5;
-        }
-
-        #contenido {
-            max-width: 1100px;
-            margin: 0 auto;
-            text-align: justify;
-        }
-
-        /* -------------------- FUENTES -------------------- */
-        #fuentes {
-            font-size: 15px;
-            line-height: 1.5;
-        }
-
-        #fuentes p {
-            font-size: 15px;
-            line-height: 1.5;
-        }
-
-        #fuentes {
-            max-width: 1100px;
-            margin: 0 auto;
-            text-align: justify;
-        }
-
-        /* -------------------- MÁRGENES -------------------- */
-        #introduccion,
-        #contenido,
-        #actividades,
-        #fuentes {
-            padding-left: 60px;
-            padding-right: 60px;
-        }
-
-        /*-------------------TABLAS GENERALES----------------*/
-        .tabla-simple {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-
-        .tabla-simple th,
-        .tabla-simple td {
-            border: 1px solid #ccc;
-            padding: 10px 12px;
-            vertical-align: top;
-        }
-
-        .tabla-simple th {
-            background: #f5f5f5;
-            font-weight: 600;
-            text-align: left;
-        }
-
-        .tabla-simple tr:nth-child(even) {
-            background: #fafafa;
-        }
-
-        .tabla-simple tbody tr:hover {
-            background-color: #e3f2fd;
-        }
-
-        .tabla-simple strong {
-            font-weight: 600;
-        }
-
-        /*------------------EVALUACIÓN / ACTIVIDADES-----------------------*/
-        .container {
-            width: 100%;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .box {
-            background: white;
-            padding: 30px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        h2 {
-            margin-top: 0;
-            font-size: 28px;
-            letter-spacing: 1px;
-        }
-
-        .btn {
-            margin-top: 15px;
-            padding: 12px 25px;
-            font-size: 18px;
-            border: none;
-            background: #007bff;
             color: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #0056b3;
-        }
-
-        /* MODAL */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 10;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        .modal-content {
-            background: white;
-            padding: 25px;
-            width: 90%;
-            max-width: 900px;
-            margin: 60px auto;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            position: relative;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 25px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        ol li {
-            margin-bottom: 12px;
-        }
-
-        /*----------------------ecuaciones-------------*/
-        .equation {
-            background-color: #f8f9fa;
-            padding: 12px 15px;
-            border-radius: 5px;
-            margin: 10px 0;
-            font-family: "Times New Roman", serif;
-            font-style: italic;
-            text-align: center;
-            border-left: 4px solid #2ecc71;
-        }
-
-        .ecuaciones p {
             text-align: center;
         }
 
-        /*------------------- CARRUSEL INTRODUCCIÓN ----------------*/
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            margin-top: 10px;
+            color: #64c8ff;
+        }
+
+        .hero h3 {
+            font-size: 20px;
+            margin-top: 5px;
+            color: #ff7c39;
+        }
+
+        /* ----------- CARRUSEL + IMÁGENES ---------- */
         .carrusel-intro {
-            max-width: 800px;
-            margin: 30px auto 0;
-            position: relative;
+            width: 100%;
             overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
-            height: 350px;
-            /* altura uniforme */
-            background: #ffffff;
+            position: relative;
+            margin: 40px auto;
+            padding: 20px 0;
+            background: #f9f9f9;
         }
 
         .carrusel-track {
             display: flex;
-            height: 100%;
             transition: transform 0.4s ease;
         }
 
         .carrusel-slide {
-            min-width: 100%;
-            height: 100%;
+            min-width: 300px;
+            text-align: center;
+            padding: 10px;
+            position: relative;
         }
 
         .carrusel-slide img {
-            width: 100%;
-            height: 100%;
+            width: 260px;
+            height: 260px;
             object-fit: contain;
-            /* Ajusta sin recortar */
-            display: block;
-            background: #ffffff;
+            border-radius: 10px;
+        }
+
+        .carrusel-caption {
+            margin-top: 8px;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         .carrusel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.4);
+            background: #003366;
             color: white;
             border: none;
-            font-size: 24px;
-            padding: 6px 12px;
+            font-size: 30px;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 50%;
         }
 
-        .carrusel-btn:hover {
-            background: rgba(0, 0, 0, 0.7);
-        }
+        .carrusel-prev { left: 10px; }
+        .carrusel-next { right: 10px; }
 
-        .carrusel-prev {
-            left: 10px;
-        }
-
-        .carrusel-next {
-            right: 10px;
-        }
-
-        /* --- estilos añadidos para pie de foto del carrusel --- */
+        /* ---------- TOOLTIP ELEGANTE ---------- */
         .carrusel-slide {
             position: relative;
         }
 
-        .carrusel-caption {
+        .carrusel-tooltip.elegante {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            box-sizing: border-box;
-            background: rgba(255, 255, 255, 0.85);
-            text-align: center;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 12px;
             font-size: 14px;
-            padding: 4px 6px;
-        }
-
-        /* ------------ OPCIONES MÚLTIPLE ------------- */
-        .opciones {
-            margin-top: 8px;
-            margin-bottom: 15px;
-        }
-
-        .opcion-label {
-            display: block;
-            margin: 3px 0;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .opcion-label input {
-            margin-right: 6px;
-        }
-
-        .opcion-label.correcta {
-            color: #0c8c2b;
-            text-decoration: underline;
-            text-decoration-color: #0c8c2b;
-            text-decoration-thickness: 2px;
-        }
-
-        .opcion-label.incorrecta {
-            color: #c62828;
-            text-decoration: underline;
-            text-decoration-color: #c62828;
-            text-decoration-thickness: 2px;
-        }
-
-        .resultado-test {
             text-align: center;
-            font-weight: 600;
-            margin-top: 10px;
-            font-size: 16px;
+            width: max-content;
+            max-width: 240px;
+            border: 1px solid rgba(255,255,255,0.35);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            z-index: 5;
+        }
+
+        .carrusel-slide:hover .carrusel-tooltip.elegante {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.45);
+        }
+
+        /* ---------- CONTENEDORES GENERALES ---------- */
+        .contenido {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            padding-bottom: 40px;
+        }
+
+        /* ---------- IMAGENES AJUSTADAS ---------- */
+        .img-primitiva {
+            max-width: 35%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* ---------- MODELOS 3D ---------- */
+        model-viewer {
+            width: 100%;
+            height: 420px;
+            margin: 25px auto;
+            background: #f4f4f4;
+            border-radius: 14px;
         }
     </style>
+
+    <!-- LIBRERÍA MODEL-VIEWER -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 
 <body>
 
-    <!-- -------------------- MENÚ -------------------- -->
-    <nav class="menu">
-        <a href="#home" class="activo">Home</a>
-        <a href="#introduccion">Introducción</a>
-        <a href="#contenido">Contenido</a>
-        <a href="#actividades">Actividades</a>
-        <a href="#fuentes">Fuentes</a>
-    </nav>
+<!-- ================= PORTADA ================= -->
+<div class="hero">
+    <h1>Engranes cónicos y helicoidales</h1>
+    <h2>Manufactura 2</h2>
+    <h3>Materiales y Manufactura</h3>
+</div>
 
-<!-- -------------------- HOME/BANNER -------------------- -->
-<section id="home">
-    <div class="hero-banner">
-        <div class="hero-text mejor-titulo">
-            <h1>Engranes cónicos y helicoidales</h1>
-            <h2>Manufactura 2</h2>
-            <h3>Materiales y Manufactura</h3>
-        </div>
+
+<!-- ================= CARRUSEL ================= -->
+<div class="carrusel-intro">
+  <div class="carrusel-track" id="trackIntro">
+
+    <div class="carrusel-slide">
+      <img src="Imagenes/e1.png" alt="Imagen 1">
+      <div class="carrusel-caption">Engranaje recto</div>
+      <div class="carrusel-tooltip elegante">
+        Imagen tomada de:<br>https://brr.mx/wp-content/uploads/2021/01/engranaje-recto-min.jpg
+      </div>
     </div>
-</section>
+
+    <div class="carrusel-slide">
+      <img src="Imagenes/e2.png" alt="Imagen 2">
+      <div class="carrusel-caption">Engranaje helicoidal</div>
+      <div class="carrusel-tooltip elegante">
+        Imagen tomada de:<br>https://i.pinimg.com/564x/ab/31/14/ab311498721121c75dd55a1d28d9c911.jpg
+      </div>
+    </div>
+
+    <div class="carrusel-slide">
+      <img src="Imagenes/e3.png" alt="Imagen 3">
+      <div class="carrusel-caption">Engranaje en V</div>
+      <div class="carrusel-tooltip elegante">
+        Imagen tomada de:<br>https://meusnier.com.mx/img/engranes/eng_p1_img1.jpg
+      </div>
+    </div>
+
+    <div class="carrusel-slide">
+      <img src="Imagenes/e4.png" alt="Imagen 4">
+      <div class="carrusel-caption">Engranaje cónico</div>
+      <div class="carrusel-tooltip elegante">
+        Imagen tomada de:<br>https://www.norelem.mx/xs_db/BILD_DB/2/www/750/22430-010130015-Kegelrad-Bevel-gear.jpg
+      </div>
+    </div>
+
+    <div class="carrusel-slide">
+      <img src="Imagenes/e5.png" alt="Imagen 5">
+      <div class="carrusel-caption">Engranaje dentado interior</div>
+      <div class="carrusel-tooltip elegante">
+        Imagen tomada de:<br>https://image.made-in-china.com/202f0j00bRJGuqzMACcK/Planetary-Gear-Ring-for-Gearbox-and-Transmission-Box.webp
+      </div>
+    </div>
+
+  </div>
+
+  <button class="carrusel-btn carrusel-prev" onclick="moverCarrusel(-1)">‹</button>
+  <button class="carrusel-btn carrusel-next" onclick="moverCarrusel(1)">›</button>
+</div>
+
+<script>
+let posicion = 0;
+function moverCarrusel(direccion) {
+    const track = document.getElementById("trackIntro");
+    const slides = document.querySelectorAll(".carrusel-slide");
+    const ancho = slides[0].offsetWidth + 20;
+
+    posicion += direccion;
+
+    if (posicion < 0) posicion = slides.length - 1;
+    if (posicion >= slides.length) posicion = 0;
+
+    track.style.transform = `translateX(${-posicion * ancho}px)`;
+}
+</script>
+<!-- ================ CONTENIDO PRINCIPAL ================ -->
 
 <style>
-    /* Mejora visual del texto del banner */
-    .mejor-titulo h1 {
-        font-size: 55px !important;
-        font-weight: 800 !important;
-        color: white !important;
-        text-shadow: 0px 4px 10px rgba(0,0,0,0.45);
-        letter-spacing: 1px;
+    /* Estilos adicionales para el contenido interno */
+
+    .contenido h2 {
+        color: #B03030;
+        margin-top: 35px;
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+
+    .contenido h3 {
+        color: #333;
+        margin-top: 25px;
+        font-size: 20px;
+    }
+
+    .contenido p {
+        font-size: 15px;
+        text-align: justify;
+        color: #333;
+    }
+
+    .contenido ul {
+        font-size: 15px;
+    }
+
+    /* Tablas generales */
+    .tabla-simple {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 14px;
+    }
+
+    .tabla-simple th,
+    .tabla-simple td {
+        border: 1px solid #ccc;
+        padding: 8px 10px;
+        vertical-align: top;
+        text-align: left;
+    }
+
+    .tabla-simple th {
+        background: #f3f3f3;
+        font-weight: 700;
+    }
+
+    .tabla-simple tr:nth-child(even) {
+        background: #fafafa;
+    }
+
+    .tabla-simple tbody tr:hover {
+        background-color: #e9f1ff;
+    }
+
+    /* Caja ecuaciones */
+    .equation {
+        background-color: #f8f9fa;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin: 12px 0;
+        font-family: "Times New Roman", serif;
+        font-style: italic;
+        text-align: center;
+        border-left: 4px solid #2ecc71;
+    }
+
+    /* Para listas de problemas, actividades, etc. */
+    .contenido ol li {
         margin-bottom: 10px;
     }
 
-    .mejor-titulo h2 {
-        font-size: 30px !important;
-        font-weight: 700 !important;
-        color: #1EA7FF !important;
-        text-shadow: 0px 3px 8px rgba(0,0,0,0.5);
-        margin: 0;
+    /* Cuestionario / actividades */
+    .container {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto 40px auto;
     }
 
-    .mejor-titulo h3 {
-        font-size: 24px !important;
-        font-weight: 600 !important;
-        color: #ff7b25 !important;
-        text-shadow: 0px 3px 8px rgba(0,0,0,0.5);
-        margin-top: 8px;
+    .box {
+        background: white;
+        padding: 25px 30px;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.08);
+        text-align: center;
     }
 
-    .hero-banner {
-        position: relative;
+    .btn {
+        margin-top: 15px;
+        padding: 10px 22px;
+        font-size: 16px;
+        border: none;
+        background: #007bff;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
     }
 
-    /* Optimizar lectura con un degradado encima de la imagen */
-    .hero-banner::before {
-        content: "";
-        position: absolute;
-        top: 0;
+    .btn:hover {
+        background: #0056b3;
+    }
+
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 20;
         left: 0;
+        top: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to right, rgba(0,0,0,0.55), rgba(0,0,0,0.25), rgba(0,0,0,0));
-        z-index: 1;
+        background: rgba(0,0,0,0.6);
     }
 
-    .hero-text {
+    .modal-content {
+        background: white;
+        padding: 25px;
+        width: 90%;
+        max-width: 900px;
+        margin: 60px auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
         position: relative;
-        z-index: 2;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .opciones {
+        margin-top: 8px;
+        margin-bottom: 15px;
+    }
+
+    .opcion-label {
+        display: block;
+        margin: 3px 0;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    .opcion-label input {
+        margin-right: 6px;
+    }
+
+    .opcion-label.correcta {
+        color: #0c8c2b;
+        text-decoration: underline;
+        text-decoration-color: #0c8c2b;
+        text-decoration-thickness: 2px;
+    }
+
+    .opcion-label.incorrecta {
+        color: #c62828;
+        text-decoration: underline;
+        text-decoration-color: #c62828;
+        text-decoration-thickness: 2px;
+    }
+
+    .resultado-test {
+        text-align: center;
+        font-weight: 600;
+        margin-top: 10px;
+        font-size: 16px;
     }
 </style>
 
+<div class="contenido">
 
-    <!-- -------------------- INTRODUCCIÓN -------------------- -->
-    <section id="introduccion">
-        <h2>Introducción</h2>
+    <!-- ================= INTRODUCCIÓN ================= -->
+    <h2>Introducción</h2>
 
-        <p>
-            Los engranajes son elementos mecánicos fundamentales para la transmisión de movimiento y potencia entre
-            ejes en una amplia variedad de máquinas. Su función se basa en el acoplamiento de dientes con geometría
-            precisa que permiten modificar velocidad, torque y dirección del giro. Gracias a su eficiencia y
-            confiabilidad, los engranajes se emplean en transmisiones automotrices, maquinaria industrial, equipos de
-            elevación y sistemas de precisión.
+    <p>
+        Los engranajes son elementos mecánicos fundamentales para la transmisión de movimiento y potencia entre
+        ejes en una amplia variedad de máquinas. Su función se basa en el acoplamiento de dientes con geometría
+        precisa que permiten modificar velocidad, torque y dirección del giro. Gracias a su eficiencia y
+        confiabilidad, los engranajes se emplean en transmisiones automotrices, maquinaria industrial, equipos de
+        elevación y sistemas de precisión.
+    </p>
+
+    <p>
+        Dentro de la gran familia de engranajes, los engranes cónicos y helicoidales destacan por su capacidad para
+        trabajar con ejes que pueden ser paralelos, cruzados o intersectarse, manteniendo relaciones de
+        transmisión específicas y un funcionamiento suave. Su diseño combina criterios geométricos, selección de
+        materiales, tratamientos térmicos y procesos de manufactura que permiten obtener perfiles de diente con alta
+        exactitud y vida útil prolongada.
+    </p>
+
+    <!-- =========== CLASIFICACIÓN GENERAL =========== -->
+    <h2>Clasificación general de los engranajes</h2>
+
+    <p>
+        Por su capacidad para operar bajo cargas elevadas y en condiciones de trabajo exigentes, los engranajes son
+        ampliamente utilizados en transmisiones automotrices, maquinaria industrial, sistemas de elevación, equipo
+        minero, maquinaria agrícola y mecanismos de precisión. Su fabricación representa un área clave dentro de la
+        manufactura mecánica, combinando diseño geométrico, materiales adecuados y procesos de maquinado de alta
+        exactitud.
+    </p>
+
+    <table class="tabla-simple">
+        <thead>
+            <tr>
+                <th>Criterio</th>
+                <th>Tipo de engrane</th>
+                <th>Características principales</th>
+                <th>Aplicaciones comunes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="3"><strong>Orientación de los ejes</strong></td>
+                <td><strong>Paralelos</strong></td>
+                <td>Emplean dientes rectos o helicoidales; transmisión directa sin cambio de dirección.</td>
+                <td>Transmisiones industriales, cajas de reducción, maquinaria en general.</td>
+            </tr>
+            <tr>
+                <td><strong>Perpendiculares (90°)</strong></td>
+                <td>Utilizan engranes cónicos; permiten modificar la dirección del giro.</td>
+                <td>Diferenciales automotrices, mecanismos angulares.</td>
+            </tr>
+            <tr>
+                <td><strong>Ejes cruzados</strong></td>
+                <td>Emplean engranes helicoidales cruzados; contacto lineal limitado.</td>
+                <td>Equipos ligeros, mecanismos de baja carga.</td>
+            </tr>
+
+            <tr>
+                <td rowspan="3"><strong>Forma de los dientes</strong></td>
+                <td><strong>Rectos</strong></td>
+                <td>Contacto súbito entre dientes; fabricación sencilla; adecuados para velocidades moderadas.</td>
+                <td>Maquinaria convencional, equipo de transmisión básico.</td>
+            </tr>
+            <tr>
+                <td><strong>Helicoidales</strong></td>
+                <td>Dientes inclinados; mayor suavidad, menor ruido y mejor distribución de carga.</td>
+                <td>Transmisiones automotrices, maquinaria de alta velocidad.</td>
+            </tr>
+            <tr>
+                <td><strong>Cónicos (rectos o espirales)</strong></td>
+                <td>Permiten transmitir movimiento entre ejes que se cruzan con alta precisión.</td>
+                <td>Diferenciales, taladros angulares, maquinaria especial.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ================= ENGRANAJES CÓNICOS ================= -->
+    <h2>Engranajes cónicos</h2>
+
+    <p>
+        Los engranajes cónicos permiten transmitir movimiento entre ejes que se intersectan, por lo general a 90°.
+        Su superficie primitiva tiene forma de cono truncado, y los dientes se generan sobre esa superficie, lo que
+        les permite cambiar la dirección del giro sin modificar la continuidad del movimiento.
+    </p>
+
+    <!-- MODELO 3D ENGRANE CÓNICO -->
+    <model-viewer
+        src="Imagenes/pinion_gear.glb"
+        alt="Modelo 3D de engrane cónico"
+        camera-controls
+        auto-rotate
+        auto-rotate-delay="2000"
+        interaction-prompt="auto">
+    </model-viewer>
+
+    <!-- GEOMETRÍA FUNDAMENTAL CÓNICOS -->
+    <h3>Geometría fundamental de los engranes cónicos</h3>
+
+    <p><strong>Superficie primitiva:</strong></p>
+    <p>
+        Es la superficie teórica sobre la cual se define el contacto geométrico entre los dientes de un par de
+        engranes. En los engranes cónicos, la superficie primitiva tiene forma de cono y sobre ella se ubican los
+        parámetros fundamentales como el diámetro primitivo, la línea generatriz y el ángulo primitivo. La
+        superficie primitiva no es una superficie física del diente, sino una referencia geométrica que permite
+        establecer la relación de transmisión y la interacción correcta entre los perfiles conjugados.
+    </p>
+
+    <img class="img-primitiva" src="Imagenes/superficie_primitiva_conico.png"
+         alt="Superficie primitiva engrane cónico">
+
+    <p><strong>Ángulo primitivo:</strong></p>
+    <p>
+        Es el ángulo formado entre el eje del engrane y la generatriz de la superficie primitiva cónica. Este ángulo
+        determina la inclinación del cono primitivo y, por tanto, la relación entre los diámetros primitivos del
+        engrane conductor y del engrane conducido.
+    </p>
+
+    <p>La relación entre los diámetros primitivos y el ángulo del engrane se obtiene mediante:</p>
+
+    <div class="equation">
+        \[
+        \tan(\theta) = \frac{D_2}{D_1}
+        \]
+    </div>
+
+    <p>Donde:</p>
+    <ul>
+        <li><strong>D<sub>1</sub>:</strong> diámetro primitivo del engrane conductor.</li>
+        <li><strong>D<sub>2</sub>:</strong> diámetro primitivo del engrane conducido.</li>
+        <li><strong>\(\theta\):</strong> ángulo del cono primitivo.</li>
+    </ul>
+
+    <p><strong>Ejemplo:</strong></p>
+    <p>
+        Un par de engranes cónicos trabaja entre ejes que se intersectan. El engrane conductor tiene un diámetro
+        primitivo de \(D_1 = 80 \text{ mm}\) y el engrane conducido tiene \(D_2 = 120 \text{ mm}\). Determine el
+        ángulo del cono primitivo \(\theta\).
+    </p>
+
+    <p><strong>Solución:</strong></p>
+    <div class="equation">
+        \[
+        \tan(\theta) = \frac{D_2}{D_1} = \frac{120}{80} = 1.5
+        \]
+    </div>
+
+    <p>Por lo tanto:</p>
+    <div class="equation">
+        \[
+        \theta = \tan^{-1}(1.5) \approx 56.31^\circ
+        \]
+    </div>
+
+    <p><strong>Respuesta:</strong> El ángulo del cono primitivo es aproximadamente \(56.31^\circ\).</p>
+
+    <!-- ================= ENGRANAJES HELICOIDALES ================= -->
+    <h2>Engranajes helicoidales</h2>
+
+    <p>
+        Los engranajes helicoidales se utilizan para transmitir movimiento entre ejes paralelos o ejes cruzados. A
+        diferencia de los engranes rectos, los dientes de los engranes helicoidales se encuentran inclinados con
+        respecto al eje de rotación según un ángulo de hélice previamente definido. Esta geometría permite que la
+        transmisión se realice mediante un contacto progresivo a lo largo del diente, lo que incrementa la
+        superficie efectiva de interacción y favorece una distribución más uniforme del esfuerzo.
+    </p>
+
+    <table class="tabla-simple">
+        <thead>
+            <tr>
+                <th>Característica</th>
+                <th>Descripción técnica</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Orientación del eje</strong></td>
+                <td>Funcionan en ejes paralelos o cruzados.</td>
+            </tr>
+            <tr>
+                <td><strong>Ángulo de hélice (\(\beta\))</strong></td>
+                <td>Define la inclinación del diente. Controla el contacto entre perfiles conjugados y afecta el
+                    módulo normal del engrane.</td>
+            </tr>
+            <tr>
+                <td><strong>Contacto entre dientes</strong></td>
+                <td>El contacto ocurre a lo largo de una línea inclinada, lo que permite que varios dientes
+                    participen simultáneamente.</td>
+            </tr>
+            <tr>
+                <td><strong>Geometría de fabricación</strong></td>
+                <td>El diente se genera mediante un desplazamiento helicoidal coordinado con la rotación del
+                    engrane durante el maquinado.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- MODELO 3D ENGRANE HELICOIDAL -->
+    <model-viewer
+        src="Imagenes/helical_gear.glb"
+        alt="Modelo 3D de engrane helicoidal"
+        camera-controls
+        auto-rotate
+        auto-rotate-delay="2000"
+        interaction-prompt="auto">
+    </model-viewer>
+
+    <h3>Geometría fundamental de engranes helicoidales</h3>
+
+    <p>
+        En engranes helicoidales es necesario distinguir entre dos parámetros esenciales: el paso circular y el paso
+        helicoidal, ya que ambos describen distancias medidas en diferentes planos del engrane.
+    </p>
+
+    <p><strong>Paso circular (P):</strong></p>
+    <p>
+        Es la distancia medida sobre el círculo primitivo, entre un punto de un diente y el punto correspondiente
+        del siguiente diente en el plano transversal (plano perpendicular al eje del engrane). Es un parámetro
+        básico para definir el módulo transversal y la distribución de los dientes alrededor del engrane.
+    </p>
+
+    <p><strong>Paso helicoidal (P<sub>h</sub>):</strong></p>
+    <p>
+        Es la distancia axial que recorre un punto del diente al completar una vuelta completa siguiendo la hélice.
+        Es decir, mide cuánto “avanza” el diente en dirección axial al recorrer un ciclo completo de su trayectoria
+        helicoidal.
+    </p>
+
+    <p>La relación entre ambos pasos está dada por:</p>
+
+    <div class="equation">
+        \[
+        P_h = \frac{P}{\cos(\beta)}
+        \]
+    </div>
+
+    <p>Donde:</p>
+    <ul>
+        <li><strong>P:</strong> paso circular (plano transversal).</li>
+        <li><strong>\(\beta\):</strong> ángulo de hélice.</li>
+        <li><strong>P<sub>h</sub>:</strong> paso helicoidal (desplazamiento a lo largo del eje).</li>
+    </ul>
+
+    <p>
+        Esta relación muestra que el paso helicoidal siempre es mayor que el paso circular para cualquier ángulo de
+        hélice distinto de cero.
+    </p>
+
+    <p><strong>Ejemplo de aplicación:</strong></p>
+    <p>
+        En una caja de engranes industrial, se requiere fabricar un engrane helicoidal que funcione en un par de
+        ejes paralelos. El diseño establece un paso circular transversal de \(P = 5 \text{ mm}\) y un ángulo de
+        hélice de \(\beta = 20^\circ\) con el fin de incrementar la longitud de contacto entre dientes. Para
+        calibrar la máquina generadora, es necesario determinar el paso helicoidal, ya que este valor define el
+        desplazamiento del diente a lo largo del eje durante el maquinado. Calcule el paso helicoidal
+        correspondiente.
+    </p>
+
+    <p><strong>Solución:</strong></p>
+    <div class="equation">
+        \[
+        P_h = \frac{P}{\cos(\beta)} =
+        \frac{5}{\cos(20^\circ)} \approx 5.32 \text{ mm}
+        \]
+    </div>
+
+    <p><strong>Respuesta:</strong> El paso helicoidal requerido para ajustar la máquina generadora es
+        aproximadamente \(5.32 \text{ mm}\).</p>
+
+    <!-- ========== MÉTODOS DE FABRICACIÓN (SIN TABLA) ========== -->
+    <h2>Métodos de fabricación más utilizados</h2>
+
+    <p>
+        La fabricación de engranes requiere procesos que permitan generar perfiles precisos y relaciones de
+        transmisión exactas. Los métodos utilizados dependen del tipo de engrane, la precisión requerida,
+        el volumen de producción y la disponibilidad de maquinaria. En engranes cónicos y helicoidales se emplean
+        principalmente procesos de fresado por forma, procesos generadores especializados y rectificado,
+        especialmente cuando se requieren tolerancias estrechas.
+    </p>
+
+    <h3>1. Fresado</h3>
+
+    <p>
+        En este método, el perfil del diente se obtiene mediante una herramienta cuya geometría
+        corresponde al perfil transversal del diente. Cada diente se corta de manera individual utilizando
+        un cabezal divisor para posicionar la pieza de acuerdo con el número de dientes requerido.
+    </p>
+
+    <p><strong>Características técnicas:</strong></p>
+    <ul>
+        <li>El espaciado se controla mediante división mecánica (relación 40:1 u otras).</li>
+        <li>Se necesita seleccionar una herramienta con el perfil correspondiente al módulo.</li>
+        <li>Adecuado para producción baja o fabricación por pieza.</li>
+    </ul>
+
+    <p><strong>Aplicaciones:</strong> engranes cónicos rectos, prototipos, reparaciones y piezas individuales.</p>
+
+    <h3>2. Maquinado generador para engranes cónicos (sistemas tipo Gleason o similares)</h3>
+
+    <p>
+        Los engranes cónicos espirales e hipoides se fabrican mediante maquinaria especializada que coordina la
+        rotación de la herramienta y la pieza para generar el perfil de manera cinemática.
+    </p>
+
+    <p><strong>Características técnicas:</strong></p>
+    <ul>
+        <li>El perfil se obtiene mediante generación, no por forma directa.</li>
+        <li>El ángulo de espiral, profundidad del diente y relación de transmisión se controlan mediante el ajuste
+            del cabezal.</li>
+        <li>Requiere máquinas específicas para engranes cónicos espirales o hipoides.</li>
+    </ul>
+    <p><strong>Aplicaciones:</strong> engranes para diferenciales automotrices y transmisiones angulares con
+        requisitos específicos de geometría.</p>
+
+    <h3>3. Fresado helicoidal sincronizado</h3>
+
+    <p>
+        En este proceso, el diente helicoidal se genera sincronizando la rotación del husillo con el avance
+        longitudinal mediante un tren de engranes. La herramienta utilizada es una herramienta de forma, pero la
+        inclinación de la hélice se obtiene mediante la sincronización mecánica.
+    </p>
+
+    <p><strong>Características técnicas:</strong></p>
+    <ul>
+        <li>El ángulo de hélice depende del ajuste del tren de engranes.</li>
+        <li>No requiere maquinaria generadora especializada.</li>
+        <li>Adecuado para producción baja o talleres de maquinado general.</li>
+    </ul>
+    <p><strong>Aplicaciones:</strong> engranes helicoidales de baja producción, prototipos y fabricación bajo
+        pedido.</p>
+
+    <h3>4. Rectificado de engranes</h3>
+
+    <p>
+        El rectificado se utiliza para engranes que requieren tolerancias estrechas o control de desviaciones de
+        perfil. Se emplean muelas abrasivas con la geometría adecuada al tipo de engrane.
+    </p>
+
+    <p><strong>Características técnicas:</strong></p>
+    <ul>
+        <li>Corrige errores residuales del proceso de corte.</li>
+        <li>Permite alcanzar grados de precisión según normas AGMA o ISO.</li>
+        <li>Controla problemas como error de paso, error de perfil y error de línea de acción.</li>
+    </ul>
+    <p><strong>Aplicaciones:</strong> engranes de transmisiones industriales, cajas automotrices y maquinaria de
+        alta precisión.</p>
+
+    <!-- ========== PROBLEMAS COMUNES ========== -->
+    <h2>Problemas comunes y soluciones</h2>
+
+    <p>
+        Durante la fabricación y operación de engranes cónicos y helicoidales pueden presentarse desviaciones
+        dimensionales, errores de perfil o alteraciones en la interacción entre dientes. Estos problemas afectan la
+        transmisión de potencia, la distribución de esfuerzos y la vida útil del conjunto. La siguiente tabla resume
+        los problemas más habituales y sus causas técnicas.
+    </p>
+
+    <table class="tabla-simple">
+        <thead>
+            <tr>
+                <th>Problema</th>
+                <th>Causa técnica</th>
+                <th>Solución recomendada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Desviación de paso</strong></td>
+                <td>Error en la división durante el fresado o desajuste en la sincronización mecánica del equipo.</td>
+                <td>Verificar la relación de división; recalibrar el cabezal divisor o el tren de engranes.</td>
+            </tr>
+            <tr>
+                <td><strong>Error de perfil del diente</strong></td>
+                <td>Herramienta desgastada o selección incorrecta del módulo o del cortador.</td>
+                <td>Sustituir la herramienta; confirmar módulo, ángulo de presión y forma del cortador.</td>
+            </tr>
+            <tr>
+                <td><strong>Desajuste en ángulo de hélice</strong></td>
+                <td>Calibración incorrecta del tren de engranes o error en la programación del generador.</td>
+                <td>Ajustar la relación cinemática; revisar el ángulo de hélice especificado.</td>
+            </tr>
+            <tr>
+                <td><strong>Contacto limitado en engranes helicoidales</strong></td>
+                <td>Desalineación entre ejes o error en el montaje.</td>
+                <td>Verificar alineación axial y paralelismo de los ejes; corregir desplazamientos.</td>
+            </tr>
+            <tr>
+                <td><strong>Interferencia entre dientes</strong></td>
+                <td>Variación en profundidad de corte, módulo inadecuado o incorrecto diámetro primitivo.</td>
+                <td>Ajustar profundidad; revisar módulo y relación geométrica entre engranes.</td>
+            </tr>
+            <tr>
+                <td><strong>Patrón de contacto incorrecto en engranes cónicos</strong></td>
+                <td>Error en ángulo primitivo, desplazamiento del montaje o desajuste en el generador.</td>
+                <td>Verificar cálculo del ángulo primitivo; ajustar posición axial y lateral del engrane.</td>
+            </tr>
+            <tr>
+                <td><strong>Exceso de carga axial en engranes helicoidales</strong></td>
+                <td>Ángulo de hélice inadecuado para la aplicación o falta de soporte en el eje.</td>
+                <td>Seleccionar un ángulo compatible con la capacidad del soporte; añadir rodamientos adecuados.</td>
+            </tr>
+            <tr>
+                <td><strong>Desgaste prematuro</strong></td>
+                <td>Lubricación insuficiente o selección incorrecta del lubricante.</td>
+                <td>Utilizar lubricante con la viscosidad especificada; garantizar suministro constante.</td>
+            </tr>
+            <tr>
+                <td><strong>Vibración o irregularidad en transmisión</strong></td>
+                <td>Excentricidad, descentramiento o error en el montaje del engrane.</td>
+                <td>Revisar concentricidad; verificar tolerancias de montaje y ajuste en el eje.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ========== ACTIVIDADES RESUELTAS ========== -->
+    <h2>Actividades resueltas</h2>
+
+    <h3>Actividad 1. Ajuste geométrico en un par de engranes cónicos</h3>
+
+    <p>
+        En el sistema de dirección de un vehículo utilitario se utiliza un conjunto de <strong>engranes cónicos
+        espirales</strong> para transferir el movimiento del volante hacia el mecanismo de entrada de la caja de
+        dirección. Durante una inspección de mantenimiento, se sustituyó el engrane conductor por uno nuevo con un
+        <strong>diámetro primitivo de \(D_1 = 75 \text{ mm}\)</strong>. El engrane conducido permanece sin cambio y
+        tiene un <strong>diámetro primitivo de \(D_2 = 110 \text{ mm}\)</strong>.
+    </p>
+
+    <p>
+        Para verificar que el conjunto mantenga la geometría requerida, se solicita determinar el <strong>ángulo
+        primitivo \(\theta\)</strong> correspondiente a estos valores. Dicho ángulo será utilizado para confirmar
+        la posición de montaje y el ajuste axial dentro del mecanismo.
+    </p>
+
+    <p><strong>Tarea:</strong> Calcule el ángulo primitivo \(\theta\) y documente el procedimiento de obtención
+        empleando la relación geométrica correspondiente.</p>
+
+    <p><strong>Solución:</strong></p>
+    <p>La relación entre los diámetros primitivos y el ángulo primitivo se expresa como:</p>
+
+    <div class="equation">
+        \[
+        \tan(\theta) = \frac{D_2}{D_1}
+        \]
+    </div>
+
+    <p>Sustituyendo los valores:</p>
+
+    <div class="equation">
+        \[
+        \tan(\theta) = \frac{110}{75} \approx 1.4667
+        \]
+    </div>
+
+    <p>Se obtiene el ángulo aplicando la función inversa de la tangente:</p>
+
+    <div class="equation">
+        \[
+        \theta = \tan^{-1}(1.4667) \approx 55.7^\circ
+        \]
+    </div>
+
+    <p><strong>Respuesta:</strong> El ángulo primitivo correspondiente a los diámetros indicados es
+        aproximadamente <strong>55.7°</strong>.</p>
+
+    <h3>Actividad 2. Determinación del paso helicoidal en una caja reductora</h3>
+
+    <p>
+        En una <strong>caja reductora de velocidad para un transportador industrial</strong>, se requiere fabricar
+        un engrane helicoidal que transmitirá potencia entre ejes paralelos. El diseño establece un
+        <strong>paso circular transversal de \(P = 6 \text{ mm}\)</strong> con un <strong>ángulo de hélice de
+        \(\beta = 28^\circ\)</strong>. Antes del maquinado, es necesario configurar el equipo de fresado
+        sincronizado para generar la hélice correcta, lo que exige conocer el <strong>paso helicoidal real</strong>
+        que recorrerá el diente a lo largo del eje.
+    </p>
+
+    <p><strong>Tarea:</strong> Calcule el paso helicoidal \(P_h\) y registre el valor requerido para configurar el
+        desplazamiento longitudinal del equipo.</p>
+
+    <p>La relación entre el paso circular y el paso helicoidal es:</p>
+
+    <div class="equation">
+        \[
+        P_h = \frac{P}{\cos(\beta)}
+        \]
+    </div>
+
+    <p><strong>Sustituyendo los datos del problema:</strong></p>
+
+    <div class="equation">
+        \[
+        P_h = \frac{6}{\cos(28^\circ)}
+        \]
+    </div>
+
+    <p>Como \(\cos(28^\circ) \approx 0.883\):</p>
+
+    <div class="equation">
+        \[
+        P_h \approx \frac{6}{0.883} \approx 6.80 \text{ mm}
+        \]
+    </div>
+
+    <p><strong>Respuesta:</strong> El paso helicoidal requerido para la configuración de la máquina es
+        aproximadamente <strong>6.80 mm</strong>.</p>
+
+</div> <!-- cierre .contenido -->
+<!-- ================ ACTIVIDADES (CUESTIONARIO) ================ -->
+
+<div class="container">
+    <div class="box">
+        <h2 style="color:#B03030;">Cuestionario</h2>
+        <p style="font-size:15px; text-align:justify;">
+            Resuelva los siguientes ejercicios aplicando los conceptos de geometría de engranes cónicos y helicoidales.
+            Seleccione la opción que considere correcta en cada caso y, al final, presione el botón
+            <strong>“Verificar respuestas”</strong> para revisar su resultado.
         </p>
-
-        <p>
-            Dentro de la gran familia de engranajes, los engranes cónicos y helicoidales destacan por su capacidad para
-            trabajar con ejes que pueden ser paralelos, cruzados o intersectarse, manteniendo relaciones de
-            transmisión específicas y un funcionamiento suave. Su diseño combina criterios geométricos, selección de
-            materiales, tratamientos térmicos y procesos de manufactura que permiten obtener perfiles de diente con alta
-            exactitud y vida útil prolongada.
-        </p>
-
-        <!-- CARRUSEL DE IMÁGENES DEBAJO DE LOS PÁRRAFOS DE INTRODUCCIÓN -->
-        <div class="carrusel-intro">
-            <div class="carrusel-track" id="trackIntro">
-                <div class="carrusel-slide">
-                    <img src="Imagenes/e1.png" alt="Imagen 1">
-                    <div class="carrusel-caption">Engranaje recto</div>
-                </div>
-                <div class="carrusel-slide">
-                    <img src="Imagenes/e2.png" alt="Imagen 2">
-                    <div class="carrusel-caption">Engranaje helicoidal</div>
-                </div>
-                <div class="carrusel-slide">
-                    <img src="Imagenes/e3.png" alt="Imagen 3">
-                    <div class="carrusel-caption">Engranaje en V</div>
-                </div>
-                <div class="carrusel-slide">
-                    <img src="Imagenes/e4.png" alt="Imagen 4">
-                    <div class="carrusel-caption">Engranaje cónico</div>
-                </div>
-                <div class="carrusel-slide">
-                    <img src="Imagenes/e5.png" alt="Imagen 5">
-                    <div class="carrusel-caption">Engranaje con dentado interior</div>
-                </div>
-            </div>
-            <button class="carrusel-btn carrusel-prev" onclick="moverCarrusel(-1)">‹</button>
-            <button class="carrusel-btn carrusel-next" onclick="moverCarrusel(1)">›</button>
-        </div>
-
-    </section>
-
-    <!-- -------------------- CONTENIDO -------------------- -->
-    <section id="contenido">
-        <h2>Contenido</h2>
-
-        <!-- CLASIFICACIÓN GENERAL -->
-        <h2 style="text-align:center; color: #B03030;font-size: 20px;">
-            Clasificación general de los engranajes
-        </h2>
-
-        <p>
-            Por su capacidad para operar bajo cargas elevadas y en condiciones de trabajo exigentes, los engranajes son
-            ampliamente utilizados en transmisiones automotrices, maquinaria industrial, sistemas de elevación, equipo
-            minero, maquinaria agrícola y mecanismos de precisión. Su fabricación representa un área clave dentro de la
-            manufactura mecánica, combinando diseño geométrico, materiales adecuados y procesos de maquinado de alta
-            exactitud.
-        </p>
-
-        <table class="tabla-simple">
-            <thead>
-                <tr>
-                    <th>Criterio</th>
-                    <th>Tipo de engrane</th>
-                    <th>Características principales</th>
-                    <th>Aplicaciones comunes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td rowspan="3"><strong>Orientación de los ejes</strong></td>
-                    <td><strong>Paralelos</strong></td>
-                    <td>Emplean dientes rectos o helicoidales; transmisión directa sin cambio de dirección.</td>
-                    <td>Transmisiones industriales, cajas de reducción, maquinaria en general.</td>
-                </tr>
-                <tr>
-                    <td><strong>Perpendiculares (90°)</strong></td>
-                    <td>Utilizan engranes cónicos; permiten modificar la dirección del giro.</td>
-                    <td>Diferenciales automotrices, mecanismos angulares.</td>
-                </tr>
-                <tr>
-                    <td><strong>Ejes cruzados</strong></td>
-                    <td>Emplean engranes helicoidales cruzados; contacto lineal limitado.</td>
-                    <td>Equipos ligeros, mecanismos de baja carga.</td>
-                </tr>
-
-                <tr>
-                    <td rowspan="3"><strong>Forma de los dientes</strong></td>
-                    <td><strong>Rectos</strong></td>
-                    <td>Contacto súbito entre dientes; fabricación sencilla; adecuados para velocidades moderadas.</td>
-                    <td>Maquinaria convencional, equipo de transmisión básico.</td>
-                </tr>
-                <tr>
-                    <td><strong>Helicoidales</strong></td>
-                    <td>Dientes inclinados; mayor suavidad, menor ruido y mejor distribución de carga.</td>
-                    <td>Transmisiones automotrices, maquinaria de alta velocidad.</td>
-                </tr>
-                <tr>
-                    <td><strong>Cónicos (rectos o espirales)</strong></td>
-                    <td>Permiten transmitir movimiento entre ejes que se cruzan con alta precisión.</td>
-                    <td>Diferenciales, taladros angulares, maquinaria especial.</td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- ENGRANAJES CÓNICOS -->
-        <h2 style="font-size: 22px; margin-top: 35px;">Engranajes cónicos</h2>
-
-        <p>
-            Los engranajes cónicos permiten transmitir movimiento entre ejes que se intersectan, por lo general a 90°.
-            Su superficie primitiva tiene forma de cono truncado, y los dientes se generan sobre esa superficie, lo que
-            les permite cambiar la dirección del giro sin modificar la continuidad del movimiento.
-        </p>
-
-        <!-- ⚙️ MODELO 3D DEL ENGRANE CÓNICO -->
-        <div style="text-align:center; margin: 25px 0;">
-            <model-viewer
-                id="gearViewer"
-                src="Imagenes/pinion_gear.glb"
-                alt="Modelo 3D de engrane cónico"
-                camera-controls
-                auto-rotate
-                auto-rotate-delay="2000"
-                interaction-prompt="auto"
-                style="
-                    width:100%;
-                    max-width:600px;
-                    height:450px;
-                    margin:0 auto;
-                    display:block;
-                    background:#f8f8f8;
-                    border-radius:12px;
-                ">
-            </model-viewer>
-        </div>
-
-        <!-- SCRIPT MODEL VIEWER -->
-        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
-        <!-- GEOMETRÍA FUNDAMENTAL CÓNICOS -->
-        <h2 style="font-size: 22px; margin-top: 35px;">Geometría fundamental de los engranes cónicos</h2>
-
-        <p><strong>Superficie primitiva:</strong></p>
-        <p>
-            Es la superficie teórica sobre la cual se define el contacto geométrico entre los dientes de un par de
-            engranes. En los engranes cónicos, la superficie primitiva tiene forma de cono y sobre ella se ubican los
-            parámetros fundamentales como el diámetro primitivo, la línea generatriz y el ángulo primitivo. La
-            superficie primitiva no es una superficie física del diente, sino una referencia geométrica que permite
-            establecer la relación de transmisión y la interacción correcta entre los perfiles conjugados.
-        </p>
-
-        <div style="text-align:center; margin: 20px 0;">
-            <img src="Imagenes/primitiva.png" alt="Superficie primitiva engrane cónico"
-                style="max-width:30%; height:auto;">
-        </div>
-
-        <p><strong>Ángulo primitivo:</strong></p>
-        <p>
-            Es el ángulo formado entre el eje del engrane y la generatriz de la superficie primitiva cónica. Este ángulo
-            determina la inclinación del cono primitivo y, por tanto, la relación entre los diámetros primitivos del
-            engrane conductor y del engrane conducido.
-        </p>
-
-        <p>La relación entre los diámetros primitivos y el ángulo del engrane se obtiene mediante:</p>
-
-        <div class="equation">
-            \[
-            \tan(\theta) = \frac{D_2}{D_1}
-            \]
-        </div>
-
-        <p>Donde:</p>
-        <ul style="font-size:15px;">
-            <li><strong>D<sub>1</sub>:</strong> diámetro primitivo del engrane conductor</li>
-            <li><strong>D<sub>2</sub>:</strong> diámetro primitivo del engrane conducido</li>
-            <li><strong>\(\theta\):</strong> ángulo del cono primitivo</li>
-        </ul>
-
-        <p><strong>Ejemplo:</strong></p>
-        <p>
-            Un par de engranes cónicos trabaja entre ejes que se intersectan. El engrane conductor tiene un diámetro
-            primitivo de \(D_1 = 80 \text{ mm}\) y el engrane conducido tiene \(D_2 = 120 \text{ mm}\). Determine el
-            ángulo del cono primitivo \(\theta\).
-        </p>
-
-        <p><strong>Solución:</strong></p>
-        <p>Se utiliza la relación:</p>
-
-        <div class="equation">
-            \[
-            \tan(\theta) = \frac{D_2}{D_1} = \frac{120}{80} = 1.5
-            \]
-        </div>
-
-        <p>Por lo tanto:</p>
-
-        <div class="equation">
-            \[
-            \theta = \tan^{-1}(1.5) \approx 56.31^\circ
-            \]
-        </div>
-
-        <p><strong>Respuesta:</strong> El ángulo del cono primitivo es aproximadamente \(56.31^\circ\).</p>
-
-        <!-- ENGRANAJES HELICOIDALES -->
-        <h2 style="font-size: 22px; margin-top: 35px;">Engranajes helicoidales</h2>
-
-        <p>
-            Los engranajes helicoidales se utilizan para transmitir movimiento entre ejes paralelos o ejes cruzados. A
-            diferencia de los engranes rectos, los dientes de los engranes helicoidales se encuentran inclinados con
-            respecto al eje de rotación según un ángulo de hélice previamente definido. Esta geometría permite que la
-            transmisión se realice mediante un contacto progresivo a lo largo del diente, lo que incrementa la
-            superficie efectiva de interacción y favorece una distribución más uniforme del esfuerzo.
-        </p>
-
-        <table class="tabla-simple">
-            <thead>
-                <tr>
-                    <th>Característica</th>
-                    <th>Descripción técnica</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Orientación del eje</strong></td>
-                    <td>Funcionan en ejes paralelos o cruzados.</td>
-                </tr>
-                <tr>
-                    <td><strong>Ángulo de hélice (\(\beta\))</strong></td>
-                    <td>Define la inclinación del diente. Controla el contacto entre perfiles conjugados y afecta el
-                        módulo normal del engrane.</td>
-                </tr>
-                <tr>
-                    <td><strong>Contacto entre dientes</strong></td>
-                    <td>El contacto ocurre a lo largo de una línea inclinada, lo que permite que varios dientes
-                        participen simultáneamente.</td>
-                </tr>
-                <tr>
-                    <td><strong>Geometría de fabricación</strong></td>
-                    <td>El diente se genera mediante un desplazamiento helicoidal coordinado con la rotación del
-                        engrane durante el maquinado.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- ⚙️ MODELO 3D DE ENGRANE HELICOIDAL -->
-        <div style="text-align:center; margin: 25px 0;">
-            <model-viewer
-                id="helicalViewer"
-                src="Imagenes/helical_gear.glb"
-                alt="Modelo 3D de engrane helicoidal"
-                camera-controls
-                auto-rotate
-                auto-rotate-delay="2000"
-                interaction-prompt="auto"
-                style="
-                    width:100%;
-                    max-width:600px;
-                    height:450px;
-                    margin:0 auto;
-                    display:block;
-                    background:#f8f8f8;
-                    border-radius:12px;
-                ">
-            </model-viewer>
-        </div>
-
-        <!-- GEOMETRÍA FUNDAMENTAL HELICOIDALES -->
-        <h2 style="font-size: 22px; margin-top: 35px;">Geometría fundamental de engranes helicoidales</h2>
-
-        <p>
-            En engranes helicoidales es necesario distinguir entre dos parámetros esenciales: el paso circular y el paso
-            helicoidal, ya que ambos describen distancias medidas en diferentes planos del engrane.
-        </p>
-
-        <p><strong>Paso circular (P):</strong></p>
-        <p>
-            Es la distancia medida sobre el círculo primitivo, entre un punto de un diente y el punto correspondiente
-            del siguiente diente en el plano transversal (plano perpendicular al eje del engrane). Es un parámetro
-            básico para definir el módulo transversal y la distribución de los dientes alrededor del engrane.
-        </p>
-
-        <p><strong>Paso helicoidal (P<sub>h</sub>):</strong></p>
-        <p>
-            Es la distancia axial que recorre un punto del diente al completar una vuelta completa siguiendo la hélice.
-            Es decir, mide cuánto “avanza” el diente en dirección axial al recorrer un ciclo completo de su trayectoria
-            helicoidal.
-        </p>
-
-        <p>La relación entre ambos pasos está dada por:</p>
-
-        <div class="equation">
-            \[
-            P_h = \frac{P}{\cos(\beta)}
-            \]
-        </div>
-
-        <p>Donde:</p>
-        <ul style="font-size:15px;">
-            <li><strong>P:</strong> paso circular (plano transversal)</li>
-            <li><strong>\(\beta\):</strong> ángulo de hélice</li>
-            <li><strong>P<sub>h</sub>:</strong> paso helicoidal (desplazamiento a lo largo del eje)</li>
-        </ul>
-
-        <p>
-            Esta relación muestra que el paso helicoidal siempre es mayor que el paso circular para cualquier ángulo de
-            hélice distinto de cero.
-        </p>
-
-        <p><strong>Ejemplo de aplicación:</strong></p>
-        <p>
-            En una caja de engranes industrial, se requiere fabricar un engrane helicoidal que funcione en un par de
-            ejes paralelos. El diseño establece un paso circular transversal de \(P = 5 \text{ mm}\) y un ángulo de
-            hélice de \(\beta = 20^\circ\) con el fin de incrementar la longitud de contacto entre dientes. Para
-            calibrar la máquina generadora, es necesario determinar el paso helicoidal, ya que este valor define el
-            desplazamiento del diente a lo largo del eje durante el maquinado. Calcule el paso helicoidal
-            correspondiente.
-        </p>
-
-        <p><strong>Solución:</strong></p>
-
-        <div class="equation">
-            \[
-            P_h = \frac{P}{\cos(\beta)} =
-            \frac{5}{\cos(20^\circ)} \approx 5.32 \text{ mm}
-            \]
-        </div>
-
-        <p><strong>Respuesta:</strong> El paso helicoidal requerido para ajustar la máquina generadora es
-            aproximadamente \(5.32 \text{ mm}\).</p>
-
-                <!-- MÉTODOS DE FABRICACIÓN DE ENGRANES -->
-        <h2 style="font-size: 22px; margin-top: 35px;">Métodos de fabricación más utilizados</h2>
-
-        <p>
-            La fabricación de engranes requiere procesos que permitan generar perfiles precisos y relaciones de
-            transmisión exactas. Los métodos utilizados dependen del tipo de engrane, la precisión requerida,
-            el volumen de producción y la disponibilidad de maquinaria. En engranes cónicos y helicoidales se emplean
-            principalmente procesos de fresado por forma, procesos generadores especializados y rectificado,
-            especialmente cuando se requieren tolerancias estrechas.
-        </p>
-
-        <h3 style="margin-top:25px;">1. Fresado</h3>
-
-        <p>
-            En este método, el perfil del diente se obtiene mediante una herramienta cuya geometría
-            corresponde al perfil transversal del diente. Cada diente se corta de manera individual utilizando
-            un cabezal divisor para posicionar la pieza de acuerdo con el número de dientes requerido.
-        </p>
-
-        <p><strong>Características técnicas:</strong></p>
-        <ul style="font-size:15px;">
-            <li>El espaciado se controla mediante división mecánica (relación 40:1 u otras).</li>
-            <li>Se necesita seleccionar una herramienta con el perfil correspondiente al módulo.</li>
-            <li>Adecuado para producción baja o fabricación por pieza.</li>
-        </ul>
-
-        <p>
-            <strong>Aplicaciones:</strong> engranes cónicos rectos, prototipos, reparaciones y piezas individuales.
-        </p>
-
-        <!-- A PARTIR DE AQUÍ SE MANTIENEN TUS MÉTODOS 2, 3 Y 4 COMO YA LOS TENÍAS -->
-        <h3 style="margin-top:25px;">2. Maquinado generador para engranes cónicos (sistemas tipo Gleason o similares)</h3>
-
-        <p>
-            Los engranes cónicos espirales e hipoides se fabrican mediante maquinaria especializada que coordina la
-            rotación de la herramienta y la pieza para generar el perfil de manera cinemática.
-        </p>
-
-        <p><strong>Características técnicas:</strong></p>
-        <ul style="font-size:15px;">
-            <li>El perfil se obtiene mediante generación, no por forma directa.</li>
-            <li>El ángulo de espiral, profundidad del diente y relación de transmisión se controlan mediante el ajuste
-                del cabezal.</li>
-            <li>Requiere máquinas específicas para engranes cónicos espirales o hipoides.</li>
-        </ul>
-        <p><strong>Aplicaciones:</strong> engranes para diferenciales automotrices y transmisiones angulares con
-            requisitos específicos de geometría.</p>
-
-        <h3 style="margin-top:25px;">3. Fresado helicoidal sincronizado</h3>
-
-        <p>
-            En este proceso, el diente helicoidal se genera sincronizando la rotación del husillo con el avance
-            longitudinal mediante un tren de engranes. La herramienta utilizada es una herramienta de forma, pero la
-            inclinación de la hélice se obtiene mediante la sincronización mecánica.
-        </p>
-
-        <p><strong>Características técnicas:</strong></p>
-        <ul style="font-size:15px;">
-            <li>El ángulo de hélice depende del ajuste del tren de engranes.</li>
-            <li>No requiere maquinaria generadora especializada.</li>
-            <li>Adecuado para producción baja o talleres de maquinado general.</li>
-        </ul>
-        <p><strong>Aplicaciones:</strong> engranes helicoidales de baja producción, prototipos y fabricación bajo
-            pedido.</p>
-
-        <h3 style="margin-top:25px;">4. Rectificado de engranes</h3>
-
-        <p>
-            El rectificado se utiliza para engranes que requieren tolerancias estrechas o control de desviaciones de
-            perfil. Se emplean muelas abrasivas con la geometría adecuada al tipo de engrane.
-        </p>
-
-        <p><strong>Características técnicas:</strong></p>
-        <ul style="font-size:15px;">
-            <li>Corrige errores residuales del proceso de corte.</li>
-            <li>Permite alcanzar grados de precisión según normas AGMA o ISO.</li>
-            <li>Controla problemas como error de paso, error de perfil y error de línea de acción.</li>
-        </ul>
-        <p><strong>Aplicaciones:</strong> engranes de transmisiones industriales, cajas automotrices y maquinaria de
-            alta precisión.</p>
-
-        <h3 style="margin-top:25px;">2. Maquinado generador para engranes cónicos (sistemas tipo Gleason o similares)</h3>
-
-        <p>
-            Los engranes cónicos espirales e hipoides se fabrican mediante maquinaria especializada que coordina la
-            rotación de la herramienta y la pieza para generar el perfil de manera cinemática.
-        </p>
-
-        <p><strong>Características técnicas:</strong></p>
-        <ul style="font-size:15px;">
-            <li>El perfil se obtiene mediante generación, no por forma directa.</li>
-            <li>El ángulo de espiral, profundidad del diente y relación de transmisión se controlan mediante el ajuste del cabezal.</li>
-            <li>Requiere máquinas específicas para engranes cónicos espirales o hipoides.</li>
-        </ul>
-
-        <p><strong>Aplicaciones:</strong> engranes para diferenciales automotrices y transmisiones angulares con
-            requisitos específicos de geometría.</p>
-
-        <h3 style="margin-top:25px;">3. Fresado helicoidal sincronizado</h3>
-
-        <p>
-            En este proceso, el diente helicoidal se genera sincronizando la rotación del husillo con el avance longitudinal mediante un tren de engranes.
-            La herramienta utilizada es una herramienta de forma, pero la inclinación de la hélice se obtiene mediante la sincronización mecánica.
-        </p>
-
-        <p><strong>Características técnicas:</strong></p>
-        <ul style="font-size:15px;">
-            <li>El ángulo de hélice depende del ajuste del tren de engranes.</li>
-            <li>No requiere maquinaria generadora especializada.</li>
-            <li>Adecuado para producción baja o talleres de maquinado general.</li>
-        </ul>
-
-        <p><strong>Aplicaciones:</strong> engranes helicoidales de baja producción, prototipos y fabricación bajo pedido.</p>
-
-        <h3 style="margin-top:25px;">4. Rectificado de engranes</h3>
-
-        <p>
-            El rectificado se utiliza para engranes que requieren tolerancias estrechas o control de desviaciones de perfil.
-            Se emplean muelas abrasivas con la geometría adecuada al tipo de engrane.
-        </p>
-
-        <p><strong>Características técnicas:</strong></p>
-        <ul style="font-size:15px;">
-            <li>Corrige errores residuales del proceso de corte.</li>
-            <li>Permite alcanzar grados de precisión según normas AGMA o ISO.</li>
-            <li>Controla problemas como error de paso, error de perfil y error de línea de acción.</li>
-        </ul>
-
-        <p><strong>Aplicaciones:</strong> engranes de transmisiones industriales, cajas automotrices y maquinaria de alta precisión.</p>
-
-        <!-- PROBLEMAS COMUNES Y SOLUCIONES -->
-        <h2 style="font-size: 22px; margin-top: 35px;">Problemas comunes y soluciones</h2>
-
-        <p>
-            Durante la fabricación y operación de engranes cónicos y helicoidales pueden presentarse desviaciones dimensionales,
-            errores de perfil o alteraciones en la interacción entre dientes.
-            Estos problemas afectan la transmisión de potencia, la distribución de esfuerzos y la vida útil del conjunto.
-            La siguiente tabla resume los problemas más habituales y sus causas técnicas.
-        </p>
-
-        <table class="tabla-simple">
-            <thead>
-                <tr>
-                    <th>Problema</th>
-                    <th>Causa técnica</th>
-                    <th>Solución recomendada</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Desviación de paso</strong></td>
-                    <td>Error en la división durante el fresado o desajuste en la sincronización mecánica del equipo.</td>
-                    <td>Verificar la relación de división; recalibrar el cabezal divisor o el tren de engranes.</td>
-                </tr>
-                <tr>
-                    <td><strong>Error de perfil del diente</strong></td>
-                    <td>Herramienta desgastada o selección incorrecta del módulo o del cortador.</td>
-                    <td>Sustituir la herramienta; confirmar módulo, ángulo de presión y forma del cortador.</td>
-                </tr>
-                <tr>
-                    <td><strong>Desajuste en ángulo de hélice</strong></td>
-                    <td>Calibración incorrecta del tren de engranes o error en la programación del generador.</td>
-                    <td>Ajustar la relación cinemática; revisar el ángulo de hélice especificado.</td>
-                </tr>
-                <tr>
-                    <td><strong>Contacto limitado en engranes helicoidales</strong></td>
-                    <td>Desalineación entre ejes o error en el montaje.</td>
-                    <td>Verificar alineación axial y paralelismo de los ejes; corregir desplazamientos.</td>
-                </tr>
-                <tr>
-                    <td><strong>Interferencia entre dientes</strong></td>
-                    <td>Variación en profundidad de corte, módulo inadecuado o incorrecto diámetro primitivo.</td>
-                    <td>Ajustar profundidad; revisar módulo y relación geométrica entre engranes.</td>
-                </tr>
-                <tr>
-                    <td><strong>Patrón de contacto incorrecto en engranes cónicos</strong></td>
-                    <td>Error en ángulo primitivo, desplazamiento del montaje o desajuste en el generador.</td>
-                    <td>Verificar cálculo del ángulo primitivo; ajustar posición axial y lateral del engrane.</td>
-                </tr>
-                <tr>
-                    <td><strong>Exceso de carga axial en engranes helicoidales</strong></td>
-                    <td>Ángulo de hélice inadecuado para la aplicación o falta de soporte en el eje.</td>
-                    <td>Seleccionar un ángulo compatible con la capacidad del soporte; añadir rodamientos adecuados.</td>
-                </tr>
-                <tr>
-                    <td><strong>Desgaste prematuro</strong></td>
-                    <td>Lubricación insuficiente o selección incorrecta del lubricante.</td>
-                    <td>Utilizar lubricante con la viscosidad especificada; garantizar suministro constante.</td>
-                </tr>
-                <tr>
-                    <td><strong>Vibración o irregularidad en transmisión</strong></td>
-                    <td>Excentricidad, descentramiento o error en el montaje del engrane.</td>
-                    <td>Revisar concentricidad; verificar tolerancias de montaje y ajuste en el eje.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- ACTIVIDADES RESUELTAS -->
-        <h2 style="font-size: 22px; margin-top: 35px;">Actividades resueltas</h2>
-
-        <h3>Actividad 1. Ajuste geométrico en un par de engranes cónicos</h3>
-
-        <p>
-            En el sistema de dirección de un vehículo utilitario se utiliza un conjunto de <strong>engranes cónicos
-                espirales</strong> para transferir el movimiento del volante hacia el mecanismo de entrada de la caja de
-            dirección.
-            Durante una inspección de mantenimiento, se sustituyó el engrane conductor por uno nuevo con un
-            <strong>diámetro primitivo de \(D_1 = 75 \text{ mm}\)</strong>.
-            El engrane conducido permanece sin cambio y tiene un <strong>diámetro primitivo de \(D_2 = 110 \text{ mm}\)</strong>.
-        </p>
-
-        <p>
-            Para verificar que el conjunto mantenga la geometría requerida, se solicita determinar el
-            <strong>ángulo primitivo \(\theta\)</strong>
-            correspondiente a estos valores.
-            Dicho ángulo será utilizado para confirmar la posición de montaje y el ajuste axial dentro del mecanismo.
-        </p>
-
-        <p><strong>Tarea:</strong> Calcule el ángulo primitivo \(\theta\) y documente el procedimiento de obtención
-            empleando la relación geométrica correspondiente.</p>
-
-        <p><strong>Solución:</strong></p>
-        <p>La relación entre los diámetros primitivos y el ángulo primitivo se expresa como:</p>
-
-        <div class="equation">
-            \[
-            \tan(\theta) = \frac{D_2}{D_1}
-            \]
-        </div>
-
-        <p>Sustituyendo los valores:</p>
-
-        <div class="equation">
-            \[
-            \tan(\theta) = \frac{110}{75} \approx 1.4667
-            \]
-        </div>
-
-        <p>Se obtiene el ángulo aplicando la función inversa de la tangente:</p>
-
-        <div class="equation">
-            \[
-            \theta = \tan^{-1}(1.4667) \approx 55.7^\circ
-            \]
-        </div>
-
-        <p><strong>Respuesta:</strong> El ángulo primitivo correspondiente a los diámetros indicados es
-            aproximadamente <strong>55.7°</strong>.</p>
-
-        <h3 style="margin-top:30px;">Actividad 2. Determinación del paso helicoidal en una caja reductora</h3>
-
-        <p>
-            En una <strong>caja reductora de velocidad para un transportador industrial</strong>, se requiere fabricar
-            un engrane helicoidal que transmitirá potencia entre ejes paralelos.
-            El diseño establece un <strong>paso circular transversal de \(P = 6 \text{ mm}\)</strong> con un
-            <strong>ángulo de hélice de \(\beta = 28^\circ\)</strong>.
-            Antes del maquinado, es necesario configurar el equipo de fresado sincronizado para generar la hélice correcta,
-            lo que exige conocer el <strong>paso helicoidal real</strong> que recorrerá el diente a lo largo del eje.
-        </p>
-
-        <p><strong>Tarea:</strong> Calcule el paso helicoidal \(P_h\) y registre el valor requerido para configurar el desplazamiento longitudinal del equipo.</p>
-
-        <p>La relación entre el paso circular y el paso helicoidal es:</p>
-
-        <div class="equation">
-            \[
-            P_h = \frac{P}{\cos(\beta)}
-            \]
-        </div>
-
-        <p><strong>Sustituyendo los datos del problema:</strong></p>
-
-        <div class="equation">
-            \[
-            P_h = \frac{6}{\cos(28^\circ)}
-            \]
-        </div>
-
-        <p>Como \(\cos(28^\circ) \approx 0.883\):</p>
-
-        <div class="equation">
-            \[
-            P_h \approx \frac{6}{0.883} \approx 6.80 \text{ mm}
-            \]
-        </div>
-
-        <p><strong>Respuesta:</strong> El paso helicoidal requerido para la configuración de la máquina es
-            aproximadamente <strong>6.80 mm</strong>.</p>
-
-    </section>
-
-    <!-- -------------------- ACTIVIDADES (SOLO CUESTIONARIO) -------------------- -->
-    <section id="actividades">
-        <div class="container">
-            <!-- Cuestionario -->
-            <div class="box">
-                <h2 style="color: #B03030;">Cuestionario</h2>
-                <button class="btn" onclick="abrirModal('modalCuestionario')">Ver ejercicios</button>
-            </div>
-        </div>
-        <!-- ===================== MODAL CUESTIONARIO ===================== -->
-        <div id="modalCuestionario" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="cerrarModal('modalCuestionario')">&times;</span>
-                <h2 style="color: #B03030; text-align: center;">Cuestionario</h2>
-
-                <ol>
-                    <!-- PREGUNTA 1 -->
-                    <li>
-                        <strong>Ejercicio 1. Ángulo primitivo en engranes cónicos de un cabezal angular</strong><br>
-                        Un cabezal angular utilizado en un centro de maquinado emplea un par de engranes cónicos para
-                        desviar el movimiento 90°. El engrane conductor tiene un <strong>diámetro primitivo de
-                            72 mm</strong> y el engrane conducido <strong>108 mm</strong>. Calcule el
-                        <strong>ángulo primitivo \(\theta\)</strong> necesario para verificar el montaje del conjunto,
-                        usando:
-                        <div class="equation">
-                            \[
-                            \tan(\theta) = \frac{D_2}{D_1}
-                            \]
-                        </div>
-
-                        <div class="opciones" data-pregunta="1">
-                            <label class="opcion-label">
-                                <input type="radio" name="q1">
-                                \(\theta \approx 48.0^\circ\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q1">
-                                \(\theta \approx 52.5^\circ\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q1" data-correct="true">
-                                \(\theta \approx 56.3^\circ\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q1">
-                                \(\theta \approx 60.0^\circ\)
-                            </label>
-                        </div>
-                    </li>
-
-                    <!-- PREGUNTA 2 -->
-                    <li>
-                        <strong>Ejercicio 2. Paso helicoidal en una caja de engranes industrial</strong><br>
-                        Una caja reductora para un transportador requiere un engrane helicoidal con
-                        <strong>paso circular transversal de 5.5 mm</strong> y un <strong>ángulo de hélice de
-                            24°</strong>. Antes del maquinado, es necesario determinar el
-                        <strong>paso helicoidal</strong> para ajustar el desplazamiento del carro, usando:
-                        <div class="equation">
-                            \[
-                            P_h = \frac{P}{\cos(\beta)}
-                            \]
-                        </div>
-
-                        <div class="opciones" data-pregunta="2">
-                            <label class="opcion-label">
-                                <input type="radio" name="q2" data-correct="true">
-                                \(P_h \approx 6.02 \text{ mm}\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q2">
-                                \(P_h \approx 5.20 \text{ mm}\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q2">
-                                \(P_h \approx 5.80 \text{ mm}\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q2">
-                                \(P_h \approx 6.50 \text{ mm}\)
-                            </label>
-                        </div>
-                    </li>
-
-                    <!-- PREGUNTA 3 -->
-                    <li>
-                        <strong>Ejercicio 3. Ángulo primitivo en un mecanismo giratorio</strong><br>
-                        En un sistema de giro utilizado en una máquina clasificadora, se emplea un par de engranes
-                        cónicos para desviar el movimiento del eje principal. El engrane conductor tiene un
-                        <strong>diámetro primitivo de 65 mm</strong> y el engrane conducido un
-                        <strong>diámetro primitivo de 100 mm</strong>. Calcule el <strong>ángulo primitivo
-                            \(\theta\)</strong> correspondiente. Use:
-                        <div class="equation">
-                            \[
-                            \tan(\theta) = \frac{D_2}{D_1}
-                            \]
-                        </div>
-
-                        <div class="opciones" data-pregunta="3">
-                            <label class="opcion-label">
-                                <input type="radio" name="q3">
-                                \(\theta \approx 52.0^\circ\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q3" data-correct="true">
-                                \(\theta \approx 57.0^\circ\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q3">
-                                \(\theta \approx 61.0^\circ\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q3">
-                                \(\theta \approx 49.5^\circ\)
-                            </label>
-                        </div>
-                    </li>
-
-                    <!-- PREGUNTA 4 -->
-                    <li>
-                        <strong>Ejercicio 4. Ajuste del ángulo primitivo tras sustitución de engrane</strong><br>
-                        En el sistema de giro de una máquina empacadora, se reemplaza el engrane conductor por uno de
-                        mayor tamaño debido a disponibilidad en inventario. El engrane original tenía
-                        <strong>diámetro primitivo de 85 mm</strong>, y el nuevo engrane instalado tiene
-                        <strong>96 mm</strong>. El engrane conducido permanece con <strong>140 mm</strong> de diámetro
-                        primitivo. Calcule el <strong>nuevo ángulo primitivo \(\theta'\)</strong> para ajustar la
-                        posición axial del montaje, utilizando:
-                        <div class="equation">
-                            \[
-                            \tan(\theta') = \frac{D_2}{D'_1}
-                            \]
-                        </div>
-
-                        <div class="opciones" data-pregunta="4">
-                            <label class="opcion-label">
-                                <input type="radio" name="q4">
-                                \(\theta' \approx 50.0^\circ\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q4">
-                                \(\theta' \approx 58.0^\circ\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q4" data-correct="true">
-                                \(\theta' \approx 55.6^\circ\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q4">
-                                \(\theta' \approx 62.0^\circ\)
-                            </label>
-                        </div>
-                    </li>
-
-                    <!-- PREGUNTA 5 -->
-                    <li>
-                        <strong>Ejercicio 5. Cálculo de paso helicoidal en un sistema automotriz</strong><br>
-                        En una transmisión automotriz se emplea un engrane helicoidal para acoplar el eje primario con
-                        el eje intermedio. El diseño especifica un <strong>paso circular transversal de 4.8 mm</strong>
-                        y un <strong>ángulo de hélice de 30°</strong>, valores requeridos para garantizar la correcta
-                        sincronización del par de engranes. Antes del proceso de corte, es necesario determinar el
-                        <strong>paso helicoidal</strong>, ya que este valor se utiliza para ajustar el desplazamiento
-                        longitudinal en la máquina generadora. Calcule el <strong>paso helicoidal \(P_h\)</strong>
-                        usando:
-                        <div class="equation">
-                            \[
-                            P_h = \frac{P}{\cos(\beta)}
-                            \]
-                        </div>
-
-                        <div class="opciones" data-pregunta="5">
-                            <label class="opcion-label">
-                                <input type="radio" name="q5">
-                                \(P_h \approx 5.20 \text{ mm}\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q5" data-correct="true">
-                                \(P_h \approx 5.54 \text{ mm}\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q5">
-                                \(P_h \approx 6.10 \text{ mm}\)
-                            </label>
-                            <label class="opcion-label">
-                                <input type="radio" name="q5">
-                                \(P_h \approx 4.95 \text{ mm}\)
-                            </label>
-                        </div>
-                    </li>
-                </ol>
-
-                <div style="text-align:center; margin-top:10px;">
-                    <button class="btn" onclick="verificarCuestionario()">Verificar respuestas</button>
-                </div>
-
-                <p id="resultadoCuestionario" class="resultado-test"></p>
-
-                <div style="text-align:center; margin-top:15px;">
-                    <button class="btn" onclick="cerrarModal('modalCuestionario')">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- -------------------- FUENTES / BIBLIOGRAFÍA -------------------- -->
-    <section id="fuentes">
-        <h2 style="color: #B03030;">Bibliografía</h2>
-
-        <ul style="font-size:15px; line-height:1.7;">
+        <button class="btn" onclick="abrirModal('modalCuestionario')">Ver ejercicios</button>
+    </div>
+</div>
+
+<!-- ================ MODAL CUESTIONARIO ================ -->
+<div id="modalCuestionario" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal('modalCuestionario')">&times;</span>
+        <h2 style="color:#B03030; text-align:center;">Cuestionario</h2>
+
+        <ol>
+            <!-- PREGUNTA 1 -->
             <li>
-                Budynas, R. G., &amp; Nisbett, J. K. (2015).
-                <em>Diseño en ingeniería mecánica de Shigley</em> (10.ª ed.). McGraw-Hill.
-            </li>
-            <li>
-                Callister, W. D., &amp; Rethwisch, D. G. (2014).
-                <em>Ciencia e ingeniería de materiales</em> (9.ª ed.). John Wiley &amp; Sons.
-            </li>
-            <li>
-                DeGarmo, E. P., Black, J. T., &amp; Kohser, R. A. (2012).
-                <em>Materiales y procesos de manufactura</em> (11.ª ed.). Pearson Educación.
-            </li>
-            <li>
-                Groover, M. P. (2010).
-                <em>Fundamentals of modern manufacturing: Materials, processes, and systems</em> (4th ed.).
-                John Wiley &amp; Sons.
-            </li>
-            <li>
-                Norton, R. L. (2013).
-                <em>Diseño de máquinas</em> (4.ª ed.). McGraw-Hill.
-            </li>
-        </ul>
-    </section>
+                <strong>Ejercicio 1. Ángulo primitivo en engranes cónicos de un cabezal angular</strong><br>
+                Un cabezal angular utilizado en un centro de maquinado emplea un par de engranes cónicos para
+                desviar el movimiento 90°. El engrane conductor tiene un <strong>diámetro primitivo de
+                72 mm</strong> y el engrane conducido <strong>108 mm</strong>. Calcule el
+                <strong>ángulo primitivo \(\theta\)</strong> necesario para verificar el montaje del conjunto, usando:
+                <div class="equation">
+                    \[
+                    \tan(\theta) = \frac{D_2}{D_1}
+                    \]
+                </div>
 
-    <!-- -------------------- SCRIPT MENÚ INTERACTIVO -------------------- -->
-    <script>
-        const secciones = document.querySelectorAll("section[id]");
-        const links = document.querySelectorAll(".menu a");
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const id = entry.target.getAttribute("id");
-                if (entry.isIntersecting) {
-                    links.forEach(link => link.classList.remove("activo"));
-                    const actual = document.querySelector(`.menu a[href="#${id}"]`);
-                    if (actual) actual.classList.add("activo");
-                }
-            });
-        }, {
-            threshold: 0.45
+                <div class="opciones" data-pregunta="1">
+                    <label class="opcion-label">
+                        <input type="radio" name="q1">
+                        \(\theta \approx 48.0^\circ\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q1">
+                        \(\theta \approx 52.5^\circ\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q1" data-correct="true">
+                        \(\theta \approx 56.3^\circ\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q1">
+                        \(\theta \approx 60.0^\circ\)
+                    </label>
+                </div>
+            </li>
+
+            <!-- PREGUNTA 2 -->
+            <li>
+                <strong>Ejercicio 2. Paso helicoidal en una caja de engranes industrial</strong><br>
+                Una caja reductora para un transportador requiere un engrane helicoidal con
+                <strong>paso circular transversal de 5.5 mm</strong> y un <strong>ángulo de hélice de 24°</strong>.
+                Antes del maquinado, es necesario determinar el <strong>paso helicoidal</strong> para ajustar el
+                desplazamiento del carro, usando:
+                <div class="equation">
+                    \[
+                    P_h = \frac{P}{\cos(\beta)}
+                    \]
+                </div>
+
+                <div class="opciones" data-pregunta="2">
+                    <label class="opcion-label">
+                        <input type="radio" name="q2" data-correct="true">
+                        \(P_h \approx 6.02 \text{ mm}\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q2">
+                        \(P_h \approx 5.20 \text{ mm}\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q2">
+                        \(P_h \approx 5.80 \text{ mm}\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q2">
+                        \(P_h \approx 6.50 \text{ mm}\)
+                    </label>
+                </div>
+            </li>
+
+            <!-- PREGUNTA 3 -->
+            <li>
+                <strong>Ejercicio 3. Ángulo primitivo en un mecanismo giratorio</strong><br>
+                En un sistema de giro utilizado en una máquina clasificadora, se emplea un par de engranes
+                cónicos para desviar el movimiento del eje principal. El engrane conductor tiene un
+                <strong>diámetro primitivo de 65 mm</strong> y el engrane conducido un
+                <strong>diámetro primitivo de 100 mm</strong>. Calcule el <strong>ángulo primitivo \(\theta\)</strong>
+                correspondiente. Use:
+                <div class="equation">
+                    \[
+                    \tan(\theta) = \frac{D_2}{D_1}
+                    \]
+                </div>
+
+                <div class="opciones" data-pregunta="3">
+                    <label class="opcion-label">
+                        <input type="radio" name="q3">
+                        \(\theta \approx 52.0^\circ\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q3" data-correct="true">
+                        \(\theta \approx 57.0^\circ\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q3">
+                        \(\theta \approx 61.0^\circ\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q3">
+                        \(\theta \approx 49.5^\circ\)
+                    </label>
+                </div>
+            </li>
+
+            <!-- PREGUNTA 4 -->
+            <li>
+                <strong>Ejercicio 4. Ajuste del ángulo primitivo tras sustitución de engrane</strong><br>
+                En el sistema de giro de una máquina empacadora, se reemplaza el engrane conductor por uno de
+                mayor tamaño debido a disponibilidad en inventario. El engrane original tenía
+                <strong>diámetro primitivo de 85 mm</strong>, y el nuevo engrane instalado tiene
+                <strong>96 mm</strong>. El engrane conducido permanece con <strong>140 mm</strong> de diámetro
+                primitivo. Calcule el <strong>nuevo ángulo primitivo \(\theta'\)</strong> para ajustar la
+                posición axial del montaje, utilizando:
+                <div class="equation">
+                    \[
+                    \tan(\theta') = \frac{D_2}{D'_1}
+                    \]
+                </div>
+
+                <div class="opciones" data-pregunta="4">
+                    <label class="opcion-label">
+                        <input type="radio" name="q4">
+                        \(\theta' \approx 50.0^\circ\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q4">
+                        \(\theta' \approx 58.0^\circ\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q4" data-correct="true">
+                        \(\theta' \approx 55.6^\circ\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q4">
+                        \(\theta' \approx 62.0^\circ\)
+                    </label>
+                </div>
+            </li>
+
+            <!-- PREGUNTA 5 -->
+            <li>
+                <strong>Ejercicio 5. Cálculo de paso helicoidal en un sistema automotriz</strong><br>
+                En una transmisión automotriz se emplea un engrane helicoidal para acoplar el eje primario con
+                el eje intermedio. El diseño especifica un <strong>paso circular transversal de 4.8 mm</strong>
+                y un <strong>ángulo de hélice de 30°</strong>, valores requeridos para garantizar la correcta
+                sincronización del par de engranes. Antes del proceso de corte, es necesario determinar el
+                <strong>paso helicoidal</strong>, ya que este valor se utiliza para ajustar el desplazamiento
+                longitudinal en la máquina generadora. Calcule el <strong>paso helicoidal \(P_h\)</strong> usando:
+                <div class="equation">
+                    \[
+                    P_h = \frac{P}{\cos(\beta)}
+                    \]
+                </div>
+
+                <div class="opciones" data-pregunta="5">
+                    <label class="opcion-label">
+                        <input type="radio" name="q5">
+                        \(P_h \approx 5.20 \text{ mm}\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q5" data-correct="true">
+                        \(P_h \approx 5.54 \text{ mm}\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q5">
+                        \(P_h \approx 6.10 \text{ mm}\)
+                    </label>
+                    <label class="opcion-label">
+                        <input type="radio" name="q5">
+                        \(P_h \approx 4.95 \text{ mm}\)
+                    </label>
+                </div>
+            </li>
+        </ol>
+
+        <div style="text-align:center; margin-top:10px;">
+            <button class="btn" onclick="verificarCuestionario()">Verificar respuestas</button>
+        </div>
+
+        <p id="resultadoCuestionario" class="resultado-test"></p>
+
+        <div style="text-align:center; margin-top:15px;">
+            <button class="btn" onclick="cerrarModal('modalCuestionario')">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================ BIBLIOGRAFÍA ================ -->
+<div class="contenido">
+    <h2>Bibliografía</h2>
+
+    <ul style="font-size:15px; line-height:1.7;">
+        <li>
+            Budynas, R. G., &amp; Nisbett, J. K. (2015).
+            <em>Diseño en ingeniería mecánica de Shigley</em> (10.ª ed.). McGraw-Hill.
+        </li>
+        <li>
+            Callister, W. D., &amp; Rethwisch, D. G. (2014).
+            <em>Ciencia e ingeniería de materiales</em> (9.ª ed.). John Wiley &amp; Sons.
+        </li>
+        <li>
+            DeGarmo, E. P., Black, J. T., &amp; Kohser, R. A. (2012).
+            <em>Materiales y procesos de manufactura</em> (11.ª ed.). Pearson Educación.
+        </li>
+        <li>
+            Groover, M. P. (2010).
+            <em>Fundamentals of modern manufacturing: Materials, processes, and systems</em> (4th ed.).
+            John Wiley &amp; Sons.
+        </li>
+        <li>
+            Norton, R. L. (2013).
+            <em>Diseño de máquinas</em> (4.ª ed.). McGraw-Hill.
+        </li>
+    </ul>
+</div>
+
+<!-- ================ SCRIPTS GENERALES ================ -->
+
+<script>
+    function abrirModal(id) {
+        document.getElementById(id).style.display = "block";
+    }
+
+    function cerrarModal(id) {
+        document.getElementById(id).style.display = "none";
+    }
+
+    function verificarCuestionario() {
+        const contenedores = document.querySelectorAll('.opciones');
+        let correctas = 0;
+
+        // Limpiar estilos previos
+        document.querySelectorAll('.opcion-label').forEach(lbl => {
+            lbl.classList.remove('correcta', 'incorrecta');
         });
-        secciones.forEach(sec => observer.observe(sec));
-    </script>
 
-    <!-- -------------------- SCRIPT MODALES -------------------- -->
-    <script>
-        function abrirModal(id) {
-            document.getElementById(id).style.display = "block";
-        }
+        contenedores.forEach(contenedor => {
+            const radios = contenedor.querySelectorAll('input[type="radio"]');
+            const correcta = contenedor.querySelector('input[data-correct="true"]');
+            let seleccionada = null;
 
-        function cerrarModal(id) {
-            document.getElementById(id).style.display = "none";
-        }
-    </script>
-
-    <!-- --------- SCRIPT VERIFICAR CUESTIONARIO (OPCIÓN MÚLTIPLE) ---------- -->
-    <script>
-        function verificarCuestionario() {
-            const contenedores = document.querySelectorAll('.opciones');
-            let correctas = 0;
-
-            // Limpiar estilos previos
-            document.querySelectorAll('.opcion-label').forEach(lbl => {
-                lbl.classList.remove('correcta', 'incorrecta');
+            radios.forEach(r => {
+                if (r.checked) seleccionada = r;
             });
 
-            contenedores.forEach(contenedor => {
-                const radios = contenedor.querySelectorAll('input[type="radio"]');
-                const correcta = contenedor.querySelector('input[data-correct="true"]');
-                let seleccionada = null;
+            const labelCorrecta = correcta ? correcta.closest('label') : null;
 
-                radios.forEach(r => {
-                    if (r.checked) seleccionada = r;
-                });
+            if (seleccionada) {
+                const labelSel = seleccionada.closest('label');
 
-                const labelCorrecta = correcta ? correcta.closest('label') : null;
-
-                if (seleccionada) {
-                    const labelSel = seleccionada.closest('label');
-
-                    if (seleccionada === correcta) {
-                        correctas++;
-                        if (labelSel) labelSel.classList.add('correcta');
-                    } else {
-                        if (labelSel) labelSel.classList.add('incorrecta');
-                        if (labelCorrecta) labelCorrecta.classList.add('correcta');
-                    }
+                if (seleccionada === correcta) {
+                    correctas++;
+                    if (labelSel) labelSel.classList.add('correcta');
                 } else {
-                    // Si no respondió, solo marcar la correcta en verde
+                    if (labelSel) labelSel.classList.add('incorrecta');
                     if (labelCorrecta) labelCorrecta.classList.add('correcta');
                 }
-            });
-
-            const total = contenedores.length;
-            const resultado = document.getElementById('resultadoCuestionario');
-            resultado.textContent = `Respuestas correctas: ${correctas} de ${total}`;
-        }
-    </script>
-
-    <!-- -------------------- MATHJAX -------------------- -->
-    <script>
-        window.MathJax = {
-            tex: {
-                packages: { '[+]': ['html'] },
-            },
-            loader: {
-                load: ['[tex]/html']
+            } else {
+                // Si no respondió, solo marcar la correcta en verde
+                if (labelCorrecta) labelCorrecta.classList.add('correcta');
             }
-        };
-    </script>
+        });
 
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        const total = contenedores.length;
+        const resultado = document.getElementById('resultadoCuestionario');
+        resultado.textContent = `Respuestas correctas: ${correctas} de ${total}`;
+    }
+</script>
 
-    <!-- -------------------- SCRIPT CARRUSEL INTRODUCCIÓN -------------------- -->
-    <script>
-        let indiceIntro = 0;
-
-        function moverCarrusel(direccion) {
-            const track = document.getElementById("trackIntro");
-            const slides = document.querySelectorAll("#trackIntro .carrusel-slide");
-            const total = slides.length;
-
-            indiceIntro = (indiceIntro + direccion + total) % total;
-            track.style.transform = `translateX(-${indiceIntro * 100}%)`;
+<!-- ================ MATHJAX PARA ECUACIONES ================ -->
+<script>
+    window.MathJax = {
+        tex: {
+            packages: { '[+]': ['html'] },
+        },
+        loader: {
+            load: ['[tex]/html']
         }
-
-        setInterval(() => moverCarrusel(1), 5000);
-    </script>
+    };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </body>
-
 </html>
-
-
-
-
