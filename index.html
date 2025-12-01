@@ -400,6 +400,18 @@
             opacity: 1;
         }
 
+        /* Contenedor para imágenes con referencia flotante */
+.img-ref-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Mostrar tooltip al pasar el mouse sobre la imagen */
+.img-ref-wrapper:hover .carrusel-tooltip {
+    opacity: 1;
+}
+
+
         /* ------------ OPCIONES MÚLTIPLE ------------- */
         .opciones {
             margin-top: 8px;
@@ -619,10 +631,18 @@
             establecer la relación de transmisión y la interacción correcta entre los perfiles conjugados.
         </p>
 
-        <div style="text-align:center; margin: 20px 0;">
-            <img src="Imagenes/primitiva.png" alt="Superficie primitiva engrane cónico"
-                style="max-width:35%; height:auto;">
+<div style="text-align:center; margin: 20px 0;">
+    <div class="img-ref-wrapper">
+        <img src="Imagenes/superficie_primitiva_conico.png"
+             alt="Superficie primitiva engrane cónico"
+             style="max-width:35%; height:auto;">
+        <div class="carrusel-tooltip">
+            Imagen tomada de:
+            https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaU5MphpNEharw0bTocYDG5MOCwCl9Cij3D4C3rneGFHkTXA5KK9Ab9p-BtyVU2ObI7Jn5H__09VwQ7RivQbqes0Cc2UWclEAZuSXbYGMdHqUKtELOHeCelUWxr6Mnc-1h4yLcjuEv9fI/s1600/33.jpg
         </div>
+    </div>
+</div>
+
 
         <p><strong>Ángulo primitivo:</strong></p>
         <p>
@@ -1363,4 +1383,5 @@
 </body>
 
 </html>
+
 
