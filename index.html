@@ -428,9 +428,13 @@
     transition: opacity 0.25s ease, transform 0.25s ease;
     pointer-events: none;
 
-    /* AÑADIDO PARA QUE NO SE JUSTIFIQUE */
+    /* Para que se vea bien el texto */
     text-align: left;
+    white-space: normal;          /* permite saltos de línea normales */
+    overflow-wrap: anywhere;      /* rompe la URL en varias líneas */
+    word-break: break-word;       /* respaldo para navegadores viejos */
 }
+
 
 /* Por si en algún momento metes <p> dentro del tooltip */
 .carrusel-tooltip p {
@@ -1466,5 +1470,6 @@
 </body>
 
 </html>
+
 
 
