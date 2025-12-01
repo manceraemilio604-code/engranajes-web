@@ -411,23 +411,33 @@
         }
 
         /* TOOLTIP ELEGANTE PARA REFERENCIAS (carrusel e imágenes sueltas) */
-        .carrusel-tooltip {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            max-width: 260px;
-            background: rgba(255, 255, 255, 0.96);
-            color: #000;
-            font-size: 11px;
-            line-height: 1.4;
-            padding: 10px 12px;
-            border-radius: 10px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-            opacity: 0;
-            transform: translateY(-4px);
-            transition: opacity 0.25s ease, transform 0.25s ease;
-            pointer-events: none;
-        }
+.carrusel-tooltip {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    max-width: 260px;
+    background: rgba(255, 255, 255, 0.96);
+    color: #000;
+    font-size: 11px;
+    line-height: 1.4;
+    padding: 10px 12px;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+
+    /* AÑADIDO PARA QUE NO SE JUSTIFIQUE */
+    text-align: left;
+}
+
+/* Por si en algún momento metes <p> dentro del tooltip */
+.carrusel-tooltip p {
+    text-align: left;
+    margin: 0;
+}
+
 
         .carrusel-tooltip::before {
             content: "";
@@ -697,7 +707,7 @@
 
         <div style="text-align:center; margin: 20px 0;">
             <div class="img-ref-wrapper">
-                <img src="Imagenes/superficie_primitiva_conico.png"
+                <img src="Imagenes/primitiva.png"
                     alt="Superficie primitiva engrane cónico"
                     style="max-width:35%; height:auto;">
                 <div class="carrusel-tooltip">
@@ -1456,4 +1466,5 @@
 </body>
 
 </html>
+
 
