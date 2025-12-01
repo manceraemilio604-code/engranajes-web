@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engranes cónicos y helicoidales</title>
 
-    <!-- Fuente Montserrat -->
+    <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -29,7 +29,7 @@
             background: white;
         }
 
-        /* -------------------- MENÚ DERECHA -------------------- */
+        /* -------------------- MENÚ SUPERIOR -------------------- */
         nav.menu {
             display: flex;
             justify-content: flex-end;
@@ -47,7 +47,6 @@
             padding: 10px 15px;
             font-size: 18px;
             font-weight: 400;
-            position: relative;
             transition: 0.2s ease;
         }
 
@@ -55,78 +54,92 @@
             background: #f4f4f4;
         }
 
-        nav.menu a.activo::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -3px;
+        /* -------------------- BANNER -------------------- */
+        .hero-banner {
             width: 100%;
-            height: 3px;
-            background: var(--rojo-linea);
+            height: 330px;
+            background-image: url("Imagenes/layer.png");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 0 20px;
         }
 
-<!-- -------------------- HOME/BANNER -------------------- -->
-<section id="home">
-    <div class="hero-banner">
-        <div class="hero-text mejor-titulo">
-            <h1>Engranes cónicos y helicoidales</h1>
-            <h2>Manufactura 2</h2>
-            <h3>Materiales y Manufactura</h3>
+        /* Degradado oscuro para mejorar lectura */
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.25),
+                    rgba(0, 0, 0, 0));
+            z-index: 1;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        /* ----------- Tus mejoras visuales ----------- */
+        .mejor-titulo h1 {
+            font-size: 55px !important;
+            font-weight: 800 !important;
+            color: white !important;
+            text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.45);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .mejor-titulo h2 {
+            font-size: 30px !important;
+            font-weight: 700 !important;
+            color: #1EA7FF !important;
+            text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+            margin: 0;
+        }
+
+        .mejor-titulo h3 {
+            font-size: 24px !important;
+            font-weight: 600 !important;
+            color: #ff7b25 !important;
+            text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+            margin-top: 8px;
+        }
+
+        /* El resto de estilos de contenido y tablas quedan en el bloque 2 */
+    </style>
+</head>
+
+<body>
+
+    <!-- -------------------- BANNER -------------------- -->
+    <section id="home">
+        <div class="hero-banner">
+            <div class="hero-text mejor-titulo">
+                <h1>Engranes cónicos y helicoidales</h1>
+                <h2>Manufactura 2</h2>
+                <h3>Materiales y Manufactura</h3>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+    <!-- -------------------- MENÚ -------------------- -->
+    <nav class="menu">
+        <a href="#home" class="activo">Home</a>
+        <a href="#introduccion">Introducción</a>
+        <a href="#contenido">Contenido</a>
+        <a href="#actividades">Actividades</a>
+        <a href="#fuentes">Fuentes</a>
+    </nav>
 
-<style>
-    /* Mejora visual del texto del banner */
-    .mejor-titulo h1 {
-        font-size: 55px !important;
-        font-weight: 800 !important;
-        color: white !important;
-        text-shadow: 0px 4px 10px rgba(0,0,0,0.45);
-        letter-spacing: 1px;
-        margin-bottom: 10px;
-    }
-
-    .mejor-titulo h2 {
-        font-size: 30px !important;
-        font-weight: 700 !important;
-        color: #1EA7FF !important;
-        text-shadow: 0px 3px 8px rgba(0,0,0,0.5);
-        margin: 0;
-    }
-
-    .mejor-titulo h3 {
-        font-size: 24px !important;
-        font-weight: 600 !important;
-        color: #ff7b25 !important;
-        text-shadow: 0px 3px 8px rgba(0,0,0,0.5);
-        margin-top: 8px;
-    }
-
-    .hero-banner {
-        position: relative;
-    }
-
-    /* Optimizar lectura con un degradado encima de la imagen */
-    .hero-banner::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to right, rgba(0,0,0,0.55), rgba(0,0,0,0.25), rgba(0,0,0,0));
-        z-index: 1;
-    }
-
-    .hero-text {
-        position: relative;
-        z-index: 2;
-    }
-</style>
-
-
-        /* -------------------- SECCIONES -------------------- */
+    <!-- -------------------- ESTILOS RESTO DE LA PÁGINA -------------------- -->
+    <style>
+        /* SECCIONES GENERALES */
         section {
             padding: 40px 60px;
         }
@@ -145,7 +158,7 @@
             color: #333;
         }
 
-        /* -------------------- INTRODUCCIÓN -------------------- */
+        /* INTRODUCCIÓN */
         #introduccion h2 {
             color: var(--rojo-linea);
         }
@@ -161,7 +174,7 @@
             text-align: justify;
         }
 
-        /* -------------------- CONTENIDO -------------------- */
+        /* CONTENIDO */
         #contenido h2 {
             color: var(--rojo-linea);
         }
@@ -177,10 +190,13 @@
             text-align: justify;
         }
 
-        /* -------------------- FUENTES -------------------- */
+        /* FUENTES */
         #fuentes {
             font-size: 15px;
             line-height: 1.5;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: justify;
         }
 
         #fuentes p {
@@ -188,13 +204,7 @@
             line-height: 1.5;
         }
 
-        #fuentes {
-            max-width: 1100px;
-            margin: 0 auto;
-            text-align: justify;
-        }
-
-        /* -------------------- MÁRGENES -------------------- */
+        /* MÁRGENES LATERALES */
         #introduccion,
         #contenido,
         #actividades,
@@ -203,7 +213,7 @@
             padding-right: 60px;
         }
 
-        /*-------------------TABLAS GENERALES----------------*/
+        /* TABLAS */
         .tabla-simple {
             width: 100%;
             border-collapse: collapse;
@@ -236,7 +246,7 @@
             font-weight: 600;
         }
 
-        /*------------------EVALUACIÓN / ACTIVIDADES-----------------------*/
+        /* CONTENEDOR GENERAL DE ACTIVIDADES */
         .container {
             width: 100%;
             max-width: 900px;
@@ -250,12 +260,6 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-        }
-
-        h2 {
-            margin-top: 0;
-            font-size: 28px;
-            letter-spacing: 1px;
         }
 
         .btn {
@@ -278,7 +282,7 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 10;
+            z-index: 20;
             left: 0;
             top: 0;
             width: 100%;
@@ -312,7 +316,7 @@
             margin-bottom: 12px;
         }
 
-        /*----------------------ecuaciones-------------*/
+        /* ECUACIONES */
         .equation {
             background-color: #f8f9fa;
             padding: 12px 15px;
@@ -328,7 +332,7 @@
             text-align: center;
         }
 
-        /*------------------- CARRUSEL INTRODUCCIÓN ----------------*/
+        /* CARRUSEL INTRODUCCIÓN */
         .carrusel-intro {
             max-width: 800px;
             margin: 30px auto 0;
@@ -337,7 +341,6 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
             height: 350px;
-            /* altura uniforme */
             background: #ffffff;
         }
 
@@ -350,16 +353,35 @@
         .carrusel-slide {
             min-width: 100%;
             height: 100%;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .carrusel-img-wrapper {
             position: relative;
+            width: 100%;
+            height: 100%;
         }
 
         .carrusel-slide img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            /* Ajusta sin recortar */
             display: block;
             background: #ffffff;
+        }
+
+        .carrusel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            font-size: 14px;
+            padding: 4px 6px;
         }
 
         .carrusel-btn {
@@ -373,6 +395,7 @@
             padding: 6px 12px;
             cursor: pointer;
             border-radius: 5px;
+            z-index: 5;
         }
 
         .carrusel-btn:hover {
@@ -387,57 +410,52 @@
             right: 10px;
         }
 
-        /* --- pie de foto del carrusel --- */
-        .carrusel-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            box-sizing: border-box;
-            background: rgba(255, 255, 255, 0.85);
-            text-align: center;
-            font-size: 14px;
-            padding: 4px 6px;
-            z-index: 1;
-        }
-
-        /* --- tooltip elegante con texto negro --- */
+        /* TOOLTIP ELEGANTE PARA REFERENCIAS (carrusel e imágenes sueltas) */
         .carrusel-tooltip {
             position: absolute;
             top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.95);
+            right: 10px;
+            max-width: 260px;
+            background: rgba(255, 255, 255, 0.96);
             color: #000;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            font-size: 11px;
+            line-height: 1.4;
+            padding: 10px 12px;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
             opacity: 0;
+            transform: translateY(-4px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
             pointer-events: none;
-            transition: opacity 0.25s ease;
-            z-index: 2;
-            max-width: 90%;
-            text-align: center;
         }
 
-        .carrusel-slide:hover .carrusel-tooltip {
+        .carrusel-tooltip::before {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            right: 18px;
+            border-width: 8px 7px 0 7px;
+            border-style: solid;
+            border-color: rgba(255, 255, 255, 0.96) transparent transparent transparent;
+        }
+
+        .carrusel-img-wrapper:hover .carrusel-tooltip {
             opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Contenedor para imágenes con referencia flotante */
-.img-ref-wrapper {
-    position: relative;
-    display: inline-block;
-}
+        /* PARA IMÁGENES CON REFERENCIA INDIVIDUAL (superficie primitiva) */
+        .img-ref-wrapper {
+            position: relative;
+            display: inline-block;
+        }
 
-/* Mostrar tooltip al pasar el mouse sobre la imagen */
-.img-ref-wrapper:hover .carrusel-tooltip {
-    opacity: 1;
-}
+        .img-ref-wrapper:hover .carrusel-tooltip {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-
-        /* ------------ OPCIONES MÚLTIPLE ------------- */
+        /* OPCIONES MÚLTIPLE */
         .opciones {
             margin-top: 8px;
             margin-bottom: 15px;
@@ -474,35 +492,28 @@
             margin-top: 10px;
             font-size: 16px;
         }
+
+        /* VISOR 3D */
+        .viewer-3d {
+            width: 100%;
+            max-width: 700px;
+            margin: 25px auto 10px;
+            background: #f8f8f8;
+            border-radius: 18px;
+            padding: 12px 16px 18px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
+        }
+
+        .nota-3d {
+            font-size: 13px;
+            text-align: center;
+            margin-top: 8px;
+            color: #555;
+        }
     </style>
 
-    <!-- MODEL VIEWER -->
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-</head>
-
-<body>
-
-    <!-- -------------------- MENÚ -------------------- -->
-    <nav class="menu">
-        <a href="#home" class="activo">Home</a>
-        <a href="#introduccion">Introducción</a>
-        <a href="#contenido">Contenido</a>
-        <a href="#actividades">Actividades</a>
-        <a href="#fuentes">Fuentes</a>
-    </nav>
-
-    <!-- -------------------- HOME/BANNER -------------------- -->
-    <section id="home">
-        <div class="hero-banner">
-            <div class="hero-text">
-                <h1>Engranes cónicos y helicoidales</h1>
-                <h2>Manufactura 2</h2>
-                <h3>Materiales y Manufactura</h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- -------------------- INTRODUCCIÓN -------------------- -->
+    <!-- ===================== INTRODUCCIÓN ===================== -->
     <section id="introduccion">
         <h2>Introducción</h2>
 
@@ -522,56 +533,75 @@
             exactitud y vida útil prolongada.
         </p>
 
-        <!-- CARRUSEL DE IMÁGENES DEBAJO DE LOS PÁRRAFOS DE INTRODUCCIÓN -->
+        <!-- CARRUSEL INTRODUCCIÓN -->
         <div class="carrusel-intro">
             <div class="carrusel-track" id="trackIntro">
+                <!-- 1 -->
                 <div class="carrusel-slide">
-                    <img src="Imagenes/e1.png" alt="Imagen 1">
-                    <div class="carrusel-caption">Engranaje recto</div>
-                    <div class="carrusel-tooltip">
-                        Imagen tomada de: https://brr.mx/wp-content/uploads/2021/01/engranaje-recto-min.jpg
+                    <div class="carrusel-img-wrapper">
+                        <img src="Imagenes/e1.png" alt="Engranaje recto">
+                        <div class="carrusel-caption">Engranaje recto</div>
+                        <div class="carrusel-tooltip">
+                            Imagen tomada de:
+                            https://brr.mx/wp-content/uploads/2021/01/engranaje-recto-min.jpg
+                        </div>
                     </div>
                 </div>
+                <!-- 2 -->
                 <div class="carrusel-slide">
-                    <img src="Imagenes/e2.png" alt="Imagen 2">
-                    <div class="carrusel-caption">Engranaje helicoidal</div>
-                    <div class="carrusel-tooltip">
-                        Imagen tomada de: https://i.pinimg.com/564x/ab/31/14/ab311498721121c75dd55a1d28d9c911.jpg
+                    <div class="carrusel-img-wrapper">
+                        <img src="Imagenes/e2.png" alt="Engranaje helicoidal">
+                        <div class="carrusel-caption">Engranaje helicoidal</div>
+                        <div class="carrusel-tooltip">
+                            Imagen tomada de:
+                            https://i.pinimg.com/564x/ab/31/14/ab311498721121c75dd55a1d28d9c911.jpg
+                        </div>
                     </div>
                 </div>
+                <!-- 3 -->
                 <div class="carrusel-slide">
-                    <img src="Imagenes/e3.png" alt="Imagen 3">
-                    <div class="carrusel-caption">Engranaje en V</div>
-                    <div class="carrusel-tooltip">
-                        Imagen tomada de: https://meusnier.com.mx/img/engranes/eng_p1_img1.jpg
+                    <div class="carrusel-img-wrapper">
+                        <img src="Imagenes/e3.png" alt="Engranaje en V">
+                        <div class="carrusel-caption">Engranaje en V</div>
+                        <div class="carrusel-tooltip">
+                            Imagen tomada de:
+                            https://meusnier.com.mx/img/engranes/eng_p1_img1.jpg
+                        </div>
                     </div>
                 </div>
+                <!-- 4 -->
                 <div class="carrusel-slide">
-                    <img src="Imagenes/e4.png" alt="Imagen 4">
-                    <div class="carrusel-caption">Engranaje cónico</div>
-                    <div class="carrusel-tooltip">
-                        Imagen tomada de: https://www.norelem.mx/xs_db/BILD_DB/2/www/750/22430-010130015-Kegelrad-Bevel-gear.jpg
+                    <div class="carrusel-img-wrapper">
+                        <img src="Imagenes/e4.png" alt="Engranaje cónico">
+                        <div class="carrusel-caption">Engranaje cónico</div>
+                        <div class="carrusel-tooltip">
+                            Imagen tomada de:
+                            https://www.norelem.mx/xs_db/BILD_DB/2/www/750/22430-010130015-Kegelrad-Bevel-gear.jpg
+                        </div>
                     </div>
                 </div>
+                <!-- 5 -->
                 <div class="carrusel-slide">
-                    <img src="Imagenes/e5.png" alt="Imagen 5">
-                    <div class="carrusel-caption">Engranaje con dentado interior</div>
-                    <div class="carrusel-tooltip">
-                        Imagen tomada de: https://image.made-in-china.com/202f0j00bRJGuqzMACcK/Planetary-Gear-Ring-for-Gearbox-and-Transmission-Box.webp
+                    <div class="carrusel-img-wrapper">
+                        <img src="Imagenes/e5.png" alt="Engranaje con dentado interior">
+                        <div class="carrusel-caption">Engranaje con dentado interior</div>
+                        <div class="carrusel-tooltip">
+                            Imagen tomada de:
+                            https://image.made-in-china.com/202f0j00bRJGuqzMACcK/Planetary-Gear-Ring-for-Gearbox-and-Transmission-Box.webp
+                        </div>
                     </div>
                 </div>
             </div>
             <button class="carrusel-btn carrusel-prev" onclick="moverCarrusel(-1)">‹</button>
             <button class="carrusel-btn carrusel-next" onclick="moverCarrusel(1)">›</button>
         </div>
-
     </section>
 
-    <!-- -------------------- CONTENIDO -------------------- -->
+    <!-- ===================== CONTENIDO ===================== -->
     <section id="contenido">
         <h2>Contenido</h2>
 
-        <!-- CLASIFICACIÓN GENERAL -->
+        <!-- CLASIFICACIÓN GENERAL (tabla original) -->
         <h2 style="text-align:center; color: #B03030;font-size: 20px;">
             Clasificación general de los engranajes
         </h2>
@@ -639,10 +669,22 @@
             les permite cambiar la dirección del giro sin modificar la continuidad del movimiento.
         </p>
 
-        <!-- MODELO 3D ENGRANE CÓNICO -->
-        <model-viewer src="Imagenes/pinion_gear.glb" alt="Modelo 3D engrane cónico" camera-controls auto-rotate
-            auto-rotate-delay="2000" interaction-prompt="auto" style="width:100%; height:400px; margin:20px 0;">
-        </model-viewer>
+        <!-- VISOR 3D CÓNICO -->
+        <div class="viewer-3d">
+            <model-viewer src="Imagenes/pinion_gear.glb"
+                alt="Modelo 3D de par de engranes cónicos"
+                camera-controls
+                auto-rotate
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                exposure="1.1"
+                shadow-intensity="0.6"
+                style="width: 100%; height: 420px; background:#f7f7f7; border-radius:16px;">
+            </model-viewer>
+            <p class="nota-3d">
+                Desliza, rota y acerca el modelo para observar la geometría cónica.
+            </p>
+        </div>
 
         <!-- GEOMETRÍA FUNDAMENTAL CÓNICOS -->
         <h2 style="font-size: 22px; margin-top: 35px;">Geometría fundamental de los engranes cónicos</h2>
@@ -656,18 +698,17 @@
             establecer la relación de transmisión y la interacción correcta entre los perfiles conjugados.
         </p>
 
-<div style="text-align:center; margin: 20px 0;">
-    <div class="img-ref-wrapper">
-        <img src="Imagenes/primitiva.png"
-             alt="Superficie primitiva engrane cónico"
-             style="max-width:35%; height:auto;">
-        <div class="carrusel-tooltip">
-            Imagen tomada de:
-            https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaU5MphpNEharw0bTocYDG5MOCwCl9Cij3D4C3rneGFHkTXA5KK9Ab9p-BtyVU2ObI7Jn5H__09VwQ7RivQbqes0Cc2UWclEAZuSXbYGMdHqUKtELOHeCelUWxr6Mnc-1h4yLcjuEv9fI/s1600/33.jpg
+        <div style="text-align:center; margin: 20px 0;">
+            <div class="img-ref-wrapper">
+                <img src="Imagenes/superficie_primitiva_conico.png"
+                    alt="Superficie primitiva engrane cónico"
+                    style="max-width:35%; height:auto;">
+                <div class="carrusel-tooltip">
+                    Imagen tomada de:
+                    https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaU5MphpNEharw0bTocYDG5MOCwCl9Cij3D4C3rneGFHkTXA5KK9Ab9p-BtyVU2ObI7Jn5H__09VwQ7RivQbqes0Cc2UWclEAZuSXbYGMdHqUKtELOHeCelUWxr6Mnc-1h4yLcjuEv9fI/s1600/33.jpg
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
 
         <p><strong>Ángulo primitivo:</strong></p>
         <p>
@@ -758,12 +799,24 @@
             </tbody>
         </table>
 
-        <!-- MODELO 3D ENGRANE HELICOIDAL -->
-        <model-viewer src="Imagenes/helical_gear.glb" alt="Modelo 3D engrane helicoidal" camera-controls auto-rotate
-            auto-rotate-delay="2000" interaction-prompt="auto" style="width:100%; height:400px; margin:20px 0;">
-        </model-viewer>
+        <!-- VISOR 3D HELICOIDAL -->
+        <div class="viewer-3d">
+            <model-viewer src="Imagenes/helical_gear.glb"
+                alt="Modelo 3D de engrane helicoidal"
+                camera-controls
+                auto-rotate
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                exposure="1.1"
+                shadow-intensity="0.6"
+                style="width: 100%; height: 420px; background:#f7f7f7; border-radius:16px;">
+            </model-viewer>
+            <p class="nota-3d">
+                Explora el engrane helicoidal y observa la inclinación de los dientes.
+            </p>
+        </div>
 
-        <!-- GEOMETRÍA FUNDAMENTAL HELICOIDALES -->
+        <!-- GEOMETRÍA HELICOIDALES -->
         <h2 style="font-size: 22px; margin-top: 35px;">Geometría fundamental de engranes helicoidales</h2>
 
         <p>
@@ -827,7 +880,7 @@
         <p><strong>Respuesta:</strong> El paso helicoidal requerido para ajustar la máquina generadora es
             aproximadamente \(5.32 \text{ mm}\).</p>
 
-        <!-- MÉTODOS DE FABRICACIÓN DE ENGRANES -->
+        <!-- MÉTODOS DE FABRICACIÓN -->
         <h2 style="font-size: 22px; margin-top: 35px;">Métodos de fabricación más utilizados</h2>
 
         <p>
@@ -838,12 +891,12 @@
             requieren tolerancias estrechas.
         </p>
 
-        <h3 style="margin-top:25px;">1. Fresado</h3>
+        <h3 style="margin-top:20px;">1. Fresado con cabezal divisor</h3>
 
         <p>
-            En este método, el perfil del diente se obtiene mediante una herramienta cuya geometría
-            corresponde al perfil transversal del diente. Cada diente se corta de manera individual utilizando
-            un cabezal divisor para posicionar la pieza de acuerdo con el número de dientes requerido.
+            En este método, el perfil del diente se obtiene mediante una herramienta cuya geometría corresponde al
+            perfil transversal del diente. Cada diente se corta de manera individual utilizando un cabezal divisor para
+            posicionar la pieza de acuerdo con el número de dientes requerido.
         </p>
 
         <p><strong>Características técnicas:</strong></p>
@@ -852,10 +905,7 @@
             <li>Se necesita seleccionar una herramienta con el perfil correspondiente al módulo.</li>
             <li>Adecuado para producción baja o fabricación por pieza.</li>
         </ul>
-
-        <p>
-            <strong>Aplicaciones:</strong> engranes cónicos rectos, prototipos, reparaciones y piezas individuales.
-        </p>
+        <p><strong>Aplicaciones:</strong> engranes cónicos rectos, prototipos, reparaciones y piezas individuales.</p>
 
         <h3 style="margin-top:25px;">2. Maquinado generador para engranes cónicos (sistemas tipo Gleason o similares)</h3>
 
@@ -907,7 +957,7 @@
         <p><strong>Aplicaciones:</strong> engranes de transmisiones industriales, cajas automotrices y maquinaria de
             alta precisión.</p>
 
-        <!-- PROBLEMAS COMUNES Y SOLUCIONES -->
+        <!-- PROBLEMAS COMUNES Y SOLUCIONES (tabla original) -->
         <h2 style="font-size: 22px; margin-top: 35px;">Problemas comunes y soluciones</h2>
 
         <p>
@@ -976,7 +1026,7 @@
             </tbody>
         </table>
 
-        <!-- ACTIVIDADES RESUELTAS -->
+        <!-- ACTIVIDADES RESUELTAS (se mantienen igual que antes) -->
         <h2 style="font-size: 22px; margin-top: 35px;">Actividades resueltas</h2>
 
         <h3>Actividad 1. Ajuste geométrico en un par de engranes cónicos</h3>
@@ -1069,7 +1119,7 @@
 
     </section>
 
-    <!-- -------------------- ACTIVIDADES (SOLO CUESTIONARIO) -------------------- -->
+    <!-- ===================== ACTIVIDADES (CUESTIONARIO) ===================== -->
     <section id="actividades">
         <div class="container">
             <!-- Cuestionario -->
@@ -1079,7 +1129,7 @@
             </div>
         </div>
 
-        <!-- ===================== MODAL CUESTIONARIO ===================== -->
+        <!-- MODAL CUESTIONARIO -->
         <div id="modalCuestionario" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="cerrarModal('modalCuestionario')">&times;</span>
@@ -1272,7 +1322,7 @@
         </div>
     </section>
 
-    <!-- -------------------- FUENTES / BIBLIOGRAFÍA -------------------- -->
+    <!-- ===================== FUENTES / BIBLIOGRAFÍA ===================== -->
     <section id="fuentes">
         <h2 style="color: #B03030;">Bibliografía</h2>
 
@@ -1301,7 +1351,9 @@
         </ul>
     </section>
 
-    <!-- -------------------- SCRIPT MENÚ INTERACTIVO -------------------- -->
+    <!-- ===================== SCRIPTS ===================== -->
+
+    <!-- MENÚ ACTIVO POR SECCIÓN -->
     <script>
         const secciones = document.querySelectorAll("section[id]");
         const links = document.querySelectorAll(".menu a");
@@ -1320,7 +1372,7 @@
         secciones.forEach(sec => observer.observe(sec));
     </script>
 
-    <!-- -------------------- SCRIPT MODALES -------------------- -->
+    <!-- MODALES -->
     <script>
         function abrirModal(id) {
             document.getElementById(id).style.display = "block";
@@ -1331,7 +1383,7 @@
         }
     </script>
 
-    <!-- --------- SCRIPT VERIFICAR CUESTIONARIO (OPCIÓN MÚLTIPLE) ---------- -->
+    <!-- VERIFICAR CUESTIONARIO -->
     <script>
         function verificarCuestionario() {
             const contenedores = document.querySelectorAll('.opciones');
@@ -1375,7 +1427,7 @@
         }
     </script>
 
-    <!-- -------------------- MATHJAX -------------------- -->
+    <!-- MATHJAX -->
     <script>
         window.MathJax = {
             tex: {
@@ -1386,10 +1438,9 @@
             }
         };
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <!-- -------------------- SCRIPT CARRUSEL INTRODUCCIÓN -------------------- -->
+    <!-- CARRUSEL JS -->
     <script>
         let indiceIntro = 0;
 
@@ -1405,10 +1456,9 @@
         setInterval(() => moverCarrusel(1), 5000);
     </script>
 
+    <!-- MODEL VIEWER (3D) -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
 </body>
 
 </html>
-
-
-
-
