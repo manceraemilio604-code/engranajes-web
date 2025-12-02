@@ -555,47 +555,68 @@
             background: #066272;
         }
 
-        /* TOOLTIP SOBRE TEXTO: FRESADO CON CABEZAL DIVISOR */
-        .texto-tooltip-wrapper {
-            position: relative;
-            display: inline-block;
-            cursor: help;
-        }
+     /* TOOLTIP SOBRE TEXTO: FRESADO CON CABEZAL DIVISOR */
+.texto-tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: var(--azul-sub);
+    background: rgba(10, 147, 150, 0.08);
+    border-bottom: 2px dashed var(--azul-sub);
+}
 
-        .texto-tooltip-box {
-            position: absolute;
-            left: 0;
-            top: 120%;
-            max-width: 320px;
-            background: rgba(255, 255, 255, 0.97);
-            color: #000;
-            font-size: 13px;
-            line-height: 1.4;
-            padding: 10px 12px;
-            border-radius: 10px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-            opacity: 0;
-            transform: translateY(-4px);
-            transition: opacity 0.25s ease, transform 0.25s ease;
-            pointer-events: none;
-            text-align: left;
-            z-index: 30;
-        }
+/* efecto al pasar el mouse por el texto */
+.texto-tooltip-wrapper:hover {
+    background: rgba(10, 147, 150, 0.18);
+}
 
-        .texto-tooltip-box::before {
-            content: "";
-            position: absolute;
-            top: -8px;
-            left: 18px;
-            border-width: 0 7px 8px 7px;
-            border-style: solid;
-            border-color: transparent transparent rgba(255, 255, 255, 0.97) transparent;
-        }
+/* pequeño icono para indicar que hay información */
+.texto-tooltip-wrapper::after {
+    content: "ⓘ";
+    font-size: 0.8em;
+    margin-left: 6px;
+    color: var(--azul-sub);
+}
 
-        .texto-tooltip-wrapper:hover .texto-tooltip-box {
-            opacity: 1;
-            transform: translateY(0);
-        }
+/* caja del tooltip */
+.texto-tooltip-box {
+    position: absolute;
+    left: 0;
+    top: 130%;
+    max-width: 320px;
+    background: rgba(255, 255, 255, 0.97);
+    color: #000;
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 10px 12px;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    text-align: left;
+    z-index: 30;
+}
+
+.texto-tooltip-box::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 18px;
+    border-width: 0 7px 8px 7px;
+    border-style: solid;
+    border-color: transparent transparent rgba(255, 255, 255, 0.97) transparent;
+}
+
+.texto-tooltip-wrapper:hover .texto-tooltip-box {
+    opacity: 1;
+    transform: translateY(0);
+}
+
     </style>
 
     <!-- ===================== INTRODUCCIÓN ===================== -->
@@ -1575,6 +1596,7 @@
 </body>
 
 </html>
+
 
 
 
