@@ -15,18 +15,19 @@
         }
 
         :root {
-            --gris-texto: #555;
-            --gris-fondo: #EDEDED;
-            --rojo-linea: #B03030;
-            --azul-sub: #0A8FD8;
-            --naranja: #e14b05;
+            /* NUEVA PALETA */
+            --gris-texto: #24323d;
+            --gris-fondo: #f4f5fb;
+            --rojo-linea: #005f73;   /* Títulos principales */
+            --azul-sub: #0a9396;    /* Botones / enlaces */
+            --naranja: #ee9b00;     /* Acentos */
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background: white;
+            background: var(--gris-fondo);
         }
 
         /* -------------------- MENÚ SUPERIOR -------------------- */
@@ -39,6 +40,7 @@
             position: sticky;
             top: 0;
             z-index: 10;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
         }
 
         nav.menu a {
@@ -48,10 +50,16 @@
             font-size: 18px;
             font-weight: 400;
             transition: 0.2s ease;
+            border-radius: 6px;
         }
 
         nav.menu a:hover {
-            background: #f4f4f4;
+            background: #e0e7ef;
+        }
+
+        nav.menu a.activo {
+            background: var(--azul-sub);
+            color: white;
         }
 
         /* -------------------- BANNER -------------------- */
@@ -86,7 +94,6 @@
             text-align: center;
         }
 
-        /* ----------- Tus mejoras visuales ----------- */
         .mejor-titulo h1 {
             font-size: 55px !important;
             font-weight: 800 !important;
@@ -107,12 +114,10 @@
         .mejor-titulo h3 {
             font-size: 24px !important;
             font-weight: 600 !important;
-            color: #ff7b25 !important;
+            color: #ffb347 !important;
             text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
             margin-top: 8px;
         }
-
-        /* El resto de estilos de contenido y tablas quedan en el bloque 2 */
     </style>
 </head>
 
@@ -128,6 +133,7 @@
             </div>
         </div>
     </section>
+
     <!-- -------------------- MENÚ -------------------- -->
     <nav class="menu">
         <a href="#home" class="activo">Home</a>
@@ -172,6 +178,10 @@
             max-width: 1100px;
             margin: 0 auto;
             text-align: justify;
+            background: white;
+            border-radius: 12px;
+            padding: 30px 60px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
         /* CONTENIDO */
@@ -186,8 +196,12 @@
 
         #contenido {
             max-width: 1100px;
-            margin: 0 auto;
+            margin: 30px auto;
             text-align: justify;
+            background: white;
+            border-radius: 12px;
+            padding: 30px 60px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
         /* FUENTES */
@@ -195,8 +209,12 @@
             font-size: 15px;
             line-height: 1.5;
             max-width: 1100px;
-            margin: 0 auto;
+            margin: 0 auto 40px;
             text-align: justify;
+            background: white;
+            border-radius: 12px;
+            padding: 30px 60px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
         #fuentes p {
@@ -223,23 +241,23 @@
 
         .tabla-simple th,
         .tabla-simple td {
-            border: 1px solid #ccc;
+            border: 1px solid #d0d7e2;
             padding: 10px 12px;
             vertical-align: top;
         }
 
         .tabla-simple th {
-            background: #f5f5f5;
+            background: #e3edf7;
             font-weight: 600;
             text-align: left;
         }
 
         .tabla-simple tr:nth-child(even) {
-            background: #fafafa;
+            background: #f6f8fc;
         }
 
         .tabla-simple tbody tr:hover {
-            background-color: #e3f2fd;
+            background-color: #e0f3f5;
         }
 
         .tabla-simple strong {
@@ -267,7 +285,7 @@
             padding: 12px 25px;
             font-size: 18px;
             border: none;
-            background: #007bff;
+            background: var(--azul-sub);
             color: white;
             border-radius: 8px;
             cursor: pointer;
@@ -275,7 +293,7 @@
         }
 
         .btn:hover {
-            background: #0056b3;
+            background: #066272;
         }
 
         /* MODAL */
@@ -325,7 +343,7 @@
             font-family: "Times New Roman", serif;
             font-style: italic;
             text-align: center;
-            border-left: 4px solid #2ecc71;
+            border-left: 4px solid var(--naranja);
         }
 
         .ecuaciones p {
@@ -427,7 +445,6 @@
             transform: translateY(-4px);
             transition: opacity 0.25s ease, transform 0.25s ease;
             pointer-events: none;
-            /* ajustes para que se vea bien el texto */
             text-align: left;
             white-space: normal;
             overflow-wrap: anywhere;
@@ -527,7 +544,7 @@
             margin-top: 12px;
             padding: 10px 20px;
             font-size: 16px;
-            background: #0A8FD8;
+            background: var(--azul-sub);
             color: white;
             border: none;
             border-radius: 8px;
@@ -535,7 +552,49 @@
         }
 
         .btn-solucion:hover {
-            background: #066da5;
+            background: #066272;
+        }
+
+        /* TOOLTIP SOBRE TEXTO: FRESADO CON CABEZAL DIVISOR */
+        .texto-tooltip-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .texto-tooltip-box {
+            position: absolute;
+            left: 0;
+            top: 120%;
+            max-width: 320px;
+            background: rgba(255, 255, 255, 0.97);
+            color: #000;
+            font-size: 13px;
+            line-height: 1.4;
+            padding: 10px 12px;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            pointer-events: none;
+            text-align: left;
+            z-index: 30;
+        }
+
+        .texto-tooltip-box::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 18px;
+            border-width: 0 7px 8px 7px;
+            border-style: solid;
+            border-color: transparent transparent rgba(255, 255, 255, 0.97) transparent;
+        }
+
+        .texto-tooltip-wrapper:hover .texto-tooltip-box {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 
@@ -627,8 +686,8 @@
     <section id="contenido">
         <h2>Contenido</h2>
 
-        <!-- CLASIFICACIÓN GENERAL (tabla original) -->
-        <h2 style="text-align:center; color: #B03030;font-size: 20px;">
+        <!-- CLASIFICACIÓN GENERAL -->
+        <h2 style="text-align:center; color: var(--rojo-linea);font-size: 20px;">
             Clasificación general de los engranajes
         </h2>
 
@@ -911,7 +970,16 @@
             requieren tolerancias estrechas.
         </p>
 
-        <h3 style="margin-top:20px;">1. Fresado con cabezal divisor</h3>
+        <!-- TÍTULO CON VENTANA FLOTANTE AL PASAR EL MOUSE -->
+        <h3 style="margin-top:20px;">
+            <span class="texto-tooltip-wrapper">
+                1. Fresado con cabezal divisor
+                <span class="texto-tooltip-box">
+                    El cabezal divisor es un accesorio de fresadora que permite rotar y posicionar con precisión una
+                    pieza para realizar cortes a ángulos exactos o divisiones iguales.
+                </span>
+            </span>
+        </h3>
 
         <p>
             En este método, el perfil del diente se obtiene mediante una herramienta cuya geometría corresponde al
@@ -977,7 +1045,7 @@
         <p><strong>Aplicaciones:</strong> engranes de transmisiones industriales, cajas automotrices y maquinaria de
             alta precisión.</p>
 
-        <!-- PROBLEMAS COMUNES Y SOLUCIONES (tabla original) -->
+        <!-- PROBLEMAS COMUNES Y SOLUCIONES -->
         <h2 style="font-size: 22px; margin-top: 35px;">Problemas comunes y soluciones</h2>
 
         <p>
@@ -1046,7 +1114,7 @@
             </tbody>
         </table>
 
-        <!-- ACTIVIDADES RESUELTAS (se mantienen igual que antes) -->
+        <!-- ACTIVIDADES RESUELTAS -->
         <h2 style="font-size: 22px; margin-top: 35px;">Actividades resueltas</h2>
 
         <h3>Actividad 1. Ajuste geométrico en un par de engranes cónicos</h3>
@@ -1154,7 +1222,7 @@
         <div class="container">
             <!-- Cuestionario -->
             <div class="box">
-                <h2 style="color: #B03030;">Cuestionario</h2>
+                <h2 style="color: var(--rojo-linea);">Cuestionario</h2>
                 <button class="btn" onclick="abrirModal('modalCuestionario')">Ver ejercicios</button>
             </div>
         </div>
@@ -1163,7 +1231,7 @@
         <div id="modalCuestionario" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="cerrarModal('modalCuestionario')">&times;</span>
-                <h2 style="color: #B03030; text-align: center;">Cuestionario</h2>
+                <h2 style="color: var(--rojo-linea); text-align: center;">Cuestionario</h2>
 
                 <ol>
                     <!-- PREGUNTA 1 -->
@@ -1354,7 +1422,7 @@
 
     <!-- ===================== FUENTES / BIBLIOGRAFÍA ===================== -->
     <section id="fuentes">
-        <h2 style="color: #B03030;">Bibliografía</h2>
+        <h2 style="color: var(--rojo-linea);">Bibliografía</h2>
 
         <ul style="font-size:15px; line-height:1.7;">
             <li>
@@ -1507,4 +1575,5 @@
 </body>
 
 </html>
+
 
